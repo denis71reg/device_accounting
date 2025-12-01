@@ -1,0 +1,60 @@
+═══════════════════════════════════════════════════════════════
+  ДЕПЛОЙ ЧЕРЕЗ GIT - КРАТКАЯ ИНСТРУКЦИЯ
+═══════════════════════════════════════════════════════════════
+
+📦 РЕПОЗИТОРИЙ: https://github.com/denis71reg/device_accounting.git
+
+═══════════════════════════════════════════════════════════════
+  ВАРИАНТ 1: ЕСЛИ ЕСТЬ ДОСТУП К ВЕБ-КОНСОЛИ СЕРВЕРА
+═══════════════════════════════════════════════════════════════
+
+1. Откройте веб-консоль сервера через панель управления
+
+2. Выполните команды:
+
+   cd /opt/device_accounting  # или ваша директория проекта
+   
+   # Если проекта нет - клонируйте:
+   git clone https://github.com/denis71reg/device_accounting.git .
+   
+   # Если проект есть - обновите:
+   git pull origin main
+   
+   # Запустите деплой:
+   chmod +x deploy_from_git.sh
+   ./deploy_from_git.sh
+
+═══════════════════════════════════════════════════════════════
+  ВАРИАНТ 2: ПОПРОСИТЬ DEVOPS ВЫПОЛНИТЬ
+═══════════════════════════════════════════════════════════════
+
+Отправьте DevOps эти команды:
+
+   cd /opt/device_accounting  # или текущая директория проекта
+   git pull origin main
+   docker-compose -f docker-compose.prod.yml down
+   docker-compose -f docker-compose.prod.yml build
+   docker-compose -f docker-compose.prod.yml up -d
+   docker-compose -f docker-compose.prod.yml exec app flask db upgrade
+
+═══════════════════════════════════════════════════════════════
+  ОБНОВЛЕНИЕ В БУДУЩЕМ
+═══════════════════════════════════════════════════════════════
+
+После каждого обновления кода в GitHub:
+
+   cd /opt/device_accounting
+   git pull origin main
+   ./deploy_from_git.sh
+
+═══════════════════════════════════════════════════════════════
+  ПРОВЕРКА
+═══════════════════════════════════════════════════════════════
+
+   docker-compose -f docker-compose.prod.yml ps
+   docker-compose -f docker-compose.prod.yml logs -f
+
+Приложение должно быть доступно: https://da.dev-ittest.ru
+
+═══════════════════════════════════════════════════════════════
+
