@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Пользователи · DA{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="mb-0" style="color: #2c3e50; font-weight: 600;">👤 Пользователи</h3>
+</div>
+
+<div class="card">
+    <div class="card-body p-0">
+        <table class="table table-hover mb-0 align-middle">
+            <thead class="text-uppercase small" style="background-color: #f8f9fa;">
+                <tr>
+                    <th class="ps-4" style="color: #2c3e50;">ФИО</th>
+                    <th style="color: #2c3e50;">Email</th>
+                    <th style="color: #2c3e50;">Роль</th>
+                    <th class="text-end pe-4" style="color: #2c3e50;">Действия</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td class="ps-4 fw-semibold" style="color: #2c3e50; font-size: 1rem;">{{ user.full_name }}</td>
+                    <td style="color: #5a6c7d;">{{ user.email }}</td>
+                    <td>
+                        {% if user.role.value == 'super_admin' %}
+                            <span class="badge bg-danger">Супер-админ</span>
+                        {% elif user.role.value == 'admin' %}
+                            <span class="badge bg-warning">Админ</span>
+                        {% else %}
+                            <span class="badge bg-secondary">Пользователь</span>
+                        {% endif %}
+                    </td>
+                    <td class="text-end pe-4">
+                        <div class="btn-group btn-group-sm">
+                            <form method="post" action="{{ url_for('users.set_user_role', user_id=user.id) }}" style="display: inline;">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <select name="role" class="form-select form-select-sm d-inline-block" style="width: auto;" onchange="this.form.submit()">
+                                    <option value="user" {% if user.role.value == 'user' %}selected{% endif %}>Пользователь</option>
+                                    <option value="admin" {% if user.role.value == 'admin' %}selected{% endif %}>Админ</option>
+                                    <option value="super_admin" {% if user.role.value == 'super_admin' %}selected{% endif %}>Супер-админ</option>
+                                </select>
+                            </form>
+                            {% if current_user.id != user.id and (current_user.is_super_admin or (current_user.is_admin and not user.is_admin)) %}
+                            <form method="post" action="{{ url_for('users.delete_user', user_id=user.id) }}" onsubmit="return confirm('Удалить пользователя {{ user.full_name }}?');" style="display: inline;">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <button type="submit" class="btn btn-outline-danger"><i class="bi bi-trash"></i></button>
+                            </form>
+                            {% endif %}
+                        </div>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4" class="text-center py-4" style="color: #95a5a6;">Пользователей нет</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+

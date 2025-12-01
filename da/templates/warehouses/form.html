@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Редактировать' if warehouse else 'Новый' }} склад · DA{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header text-center border-0 pt-4">
+                <h4 class="mb-0">{{ 'Редактировать склад' if warehouse else 'Новый склад' }}</h4>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <div class="mb-3">
+                        <label class="form-label small text-uppercase">Название <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" name="name" value="{{ warehouse.name if warehouse else '' }}" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label small text-uppercase">Локация <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" name="location_name" value="{{ warehouse.location.name if warehouse and warehouse.location else '' }}" required placeholder="Например: Москва, Тула, Санкт-Петербург">
+                        <small class="text-muted">Введите название локации. Если локация уже существует, она будет использована, иначе будет создана новая.</small>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-info text-white" type="submit">Сохранить</button>
+                        <a href="{{ url_for('warehouses.list_warehouses') }}" class="btn btn-outline-secondary border-0">Отмена</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

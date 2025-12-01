@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Импорт сотрудников · DA{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header text-center border-0 pt-4">
+                <h4 class="mb-0">📥 Импорт сотрудников из Excel</h4>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-info mb-4">
+                    <h6 class="alert-heading"><i class="bi bi-info-circle me-2"></i>Инструкция</h6>
+                    <p class="mb-2">Загрузите файл Excel с сотрудниками. Файл должен содержать следующие колонки:</p>
+                    <ul class="mb-0 small">
+                        <li><strong>Фамилия</strong> (обязательно)</li>
+                        <li><strong>Имя</strong> (обязательно)</li>
+                        <li><strong>Отчество</strong> (необязательно)</li>
+                        <li><strong>Должность</strong> (обязательно)</li>
+                        <li><strong>Email</strong> (обязательно, уникальный)</li>
+                        <li><strong>Телефон</strong> (обязательно, уникальный)</li>
+                        <li><strong>Telegram</strong> (необязательно, уникальный)</li>
+                        <li><strong>Локация</strong> (обязательно)</li>
+                    </ul>
+                </div>
+                
+                <form method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <div class="mb-4">
+                        <label for="file" class="form-label small text-uppercase">Файл Excel <span class="text-danger">*</span></label>
+                        <input type="file" class="form-control" name="file" id="file" accept=".xlsx,.xls" required>
+                        <small class="form-text text-muted">Поддерживаются файлы .xlsx и .xls</small>
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-success" type="submit">
+                            <i class="bi bi-upload me-2"></i>Загрузить и импортировать
+                        </button>
+                        <a href="{{ url_for('employees.list_employees') }}" class="btn btn-outline-secondary border-0">Отмена</a>
+                    </div>
+                </form>
+                
+                <div class="mt-4 pt-4 border-top">
+                    <h6 class="small text-uppercase text-muted mb-2">Пример файла</h6>
+                    <p class="small text-muted mb-0">
+                        Используйте шаблон файла с правильной структурой колонок.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

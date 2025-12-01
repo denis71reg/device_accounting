@@ -1,0 +1,209 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Редактировать' if device else 'Новый' }} девайс · DA{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header text-center border-0 pt-4">
+                <h4 class="mb-0">{{ 'Редактировать девайс' if device else 'Новый девайс' }}</h4>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <div class="mb-3">
+                        <label class="form-label small text-uppercase">Инвентарный номер</label>
+                        <input type="text" class="form-control" name="inventory_number" value="{{ device.inventory_number if device else '' }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small text-uppercase">Модель</label>
+                        <input type="text" class="form-control" name="model" value="{{ device.model if device else '' }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small text-uppercase">Тип</label>
+                        <select class="form-select" name="type_id" required>
+                            {% for t in types %}
+                                <option value="{{ t.id }}" {% if device and device.type_id == t.id %}selected{% endif %}>{{ t.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    {% if device and device.location %}
+                    <div class="mb-3">
+                        <label class="form-label small text-uppercase">Локация</label>
+                        <input type="text" class="form-control" value="{{ device.location.name }}" readonly disabled>
+                        <small class="text-muted">Локация определяется автоматически из склада или сотрудника</small>
+                    </div>
+                    {% endif %}
+                    {% if not device %}
+                    <div class="mb-3">
+                        <label class="form-label small text-uppercase">Размещение девайса <span class="text-danger">*</span></label>
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label class="form-check-label small">На склад</label>
+                                    <select class="form-select" name="warehouse_id" id="warehouse_select">
+                                        <option value="">— Выберите склад —</option>
+                                        {% for wh in warehouses %}
+                                            <option value="{{ wh.id }}">{{ wh.name }}{% if wh.location %} - {{ wh.location.name }}{% endif %}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <small class="text-muted">Выберите склад для размещения девайса</small>
+                                </div>
+                                <div class="mb-0">
+                                    <label class="form-check-label small">Или сотруднику</label>
+                                    <select class="form-select" name="owner_id" id="owner_select">
+                                        <option value="">— Выберите сотрудника —</option>
+                                        {% for emp in employees %}
+                                            <option value="{{ emp.id }}">{{ emp.full_name }} ({{ emp.position }}){% if emp.location %} - {{ emp.location.name }}{% endif %}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <small class="text-muted">Выберите сотрудника для выдачи девайса</small>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            // Взаимоисключающий выбор: если выбран склад, очищаем сотрудника и наоборот
+                            (function() {
+                                const warehouseSelect = document.getElementById('warehouse_select');
+                                const ownerSelect = document.getElementById('owner_select');
+                                
+                                if (warehouseSelect && ownerSelect) {
+                                    warehouseSelect.addEventListener('change', function() {
+                                        if (this.value) {
+                                            ownerSelect.value = '';
+                                        }
+                                    });
+                                    ownerSelect.addEventListener('change', function() {
+                                        if (this.value) {
+                                            warehouseSelect.value = '';
+                                        }
+                                    });
+                                    
+                                    // Проверка перед отправкой формы
+                                    const form = warehouseSelect.closest('form');
+                                    if (form) {
+                                        form.addEventListener('submit', function(e) {
+                                            const warehouseValue = warehouseSelect.value;
+                                            const ownerValue = ownerSelect.value;
+                                            
+                                            if (warehouseValue && ownerValue) {
+                                                e.preventDefault();
+                                                alert('Нельзя одновременно выбрать склад и сотрудника. Выберите что-то одно.');
+                                                return false;
+                                            }
+                                        });
+                                    }
+                                }
+                            })();
+                        </script>
+                    </div>
+                    {% endif %}
+                    {% if device %}
+                    <div class="mb-3">
+                        <label class="form-label small text-uppercase">Переместить девайс</label>
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label class="form-check-label small">На склад</label>
+                                    <select class="form-select" name="warehouse_id" id="warehouse_select_edit">
+                                        <option value="">— Не перемещать —</option>
+                                        {% for wh in warehouses %}
+                                            <option value="{{ wh.id }}" {% if device and device.warehouse_id == wh.id %}selected{% endif %}>{{ wh.name }}{% if wh.location %} - {{ wh.location.name }}{% endif %}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <input type="hidden" id="device_warehouse_id" value="{{ device.warehouse_id if device and device.warehouse_id else '' }}">
+                                    <input type="hidden" id="device_owner_id" value="{{ device.owner_id if device and device.owner_id else '' }}">
+                                    <small class="text-muted">Выберите склад, если нужно переместить девайс на склад</small>
+                                </div>
+                                <div class="mb-0">
+                                    <label class="form-check-label small">Сотруднику</label>
+                                    <select class="form-select" name="owner_id" id="owner_select_edit">
+                                        <option value="">— Не перемещать —</option>
+                                        {% for emp in employees %}
+                                            <option value="{{ emp.id }}" {% if device and device.owner_id == emp.id %}selected{% endif %}>{{ emp.full_name }} ({{ emp.position }})</option>
+                                        {% endfor %}
+                                    </select>
+                                    <small class="text-muted">Выберите сотрудника, если нужно выдать девайс сотруднику</small>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            // Взаимоисключающий выбор: если выбран склад, очищаем сотрудника и наоборот
+                            (function() {
+                                function initExclusiveSelects() {
+                                    const warehouseSelectEdit = document.getElementById('warehouse_select_edit');
+                                    const ownerSelectEdit = document.getElementById('owner_select_edit');
+                                    
+                                    if (!warehouseSelectEdit || !ownerSelectEdit) {
+                                        return;
+                                    }
+                                    
+                                    // Проверка при загрузке страницы: если оба выбраны, очищаем склад (приоритет у сотрудника)
+                                    const deviceWarehouseId = document.getElementById('device_warehouse_id')?.value || '';
+                                    const deviceOwnerId = document.getElementById('device_owner_id')?.value || '';
+                                    
+                                    // Если у девайса есть и склад, и сотрудник (не должно быть, но на всякий случай)
+                                    if (deviceWarehouseId && deviceOwnerId) {
+                                        // Очищаем склад, оставляем сотрудника
+                                        warehouseSelectEdit.value = '';
+                                    } else if (warehouseSelectEdit.value && ownerSelectEdit.value) {
+                                        // Если оба выбраны в форме, очищаем склад
+                                        warehouseSelectEdit.value = '';
+                                    }
+                                    
+                                    warehouseSelectEdit.addEventListener('change', function() {
+                                        if (this.value) {
+                                            ownerSelectEdit.value = '';
+                                        }
+                                    });
+                                    
+                                    ownerSelectEdit.addEventListener('change', function() {
+                                        if (this.value) {
+                                            warehouseSelectEdit.value = '';
+                                        }
+                                    });
+                                    
+                                    // Проверка перед отправкой формы
+                                    const form = warehouseSelectEdit.closest('form');
+                                    if (form) {
+                                        form.addEventListener('submit', function(e) {
+                                            const warehouseValue = warehouseSelectEdit.value;
+                                            const ownerValue = ownerSelectEdit.value;
+                                            
+                                            if (warehouseValue && ownerValue) {
+                                                e.preventDefault();
+                                                alert('Нельзя одновременно выбрать склад и сотрудника. Выберите что-то одно.');
+                                                return false;
+                                            }
+                                        });
+                                    }
+                                }
+                                
+                                // Пробуем сразу, если DOM уже загружен
+                                if (document.readyState === 'loading') {
+                                    document.addEventListener('DOMContentLoaded', initExclusiveSelects);
+                                } else {
+                                    initExclusiveSelects();
+                                }
+                            })();
+                        </script>
+                    </div>
+                    {% endif %}
+                    <div class="mb-3">
+                        <label class="form-label small text-uppercase">Серийный / IMEI</label>
+                        <input type="text" class="form-control" name="serial_number" value="{{ device.serial_number if device else '' }}">
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label small text-uppercase">Заметки</label>
+                        <textarea class="form-control" rows="3" name="notes">{{ device.notes if device else '' }}</textarea>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-info text-white" type="submit">Сохранить</button>
+                        <a href="{{ url_for('devices.list_devices') }}" class="btn btn-outline-secondary border-0">Отмена</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

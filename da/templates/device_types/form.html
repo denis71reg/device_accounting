@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Редактировать' if device_type else 'Новый' }} тип девайса · DA{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header text-center border-0 pt-4">
+                <h4 class="mb-0">{{ 'Редактировать тип девайса' if device_type else 'Новый тип девайса' }}</h4>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <div class="mb-4">
+                        <label class="form-label small text-uppercase">Название <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" name="name" value="{{ device_type.name if device_type else '' }}" required placeholder="Например: Laptop, Phone, Monitor">
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-info text-white" type="submit">Сохранить</button>
+                        <a href="{{ url_for('device_types.list_device_types') }}" class="btn btn-outline-secondary border-0">Отмена</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+

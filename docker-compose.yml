@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: da_app
+    environment:
+      - FLASK_ENV=development
+      - SECRET_KEY=${SECRET_KEY:-dev-secret}
+      - DATABASE_URL=sqlite:///instance/devices.db
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./instance:/app/instance
+    command: >
+      gunicorn --bind 0.0.0.0:5001 da.app:app

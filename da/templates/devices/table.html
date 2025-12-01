@@ -1,0 +1,136 @@
+<style>
+    /* Стили для таблицы девайсов - максимальный приоритет */
+    table.devices-table tbody tr.device-row:hover,
+    table.devices-table tbody tr.device-row:hover > td,
+    table.devices-table tbody tr.device-row:hover > th,
+    .devices-table tbody tr.device-row:hover,
+    .devices-table tbody tr.device-row:hover td,
+    .devices-table tbody tr.device-row:hover th {
+        background-color: #e9ecef !important;
+        background: #e9ecef !important;
+        transform: scale(1.01) !important;
+    }
+</style>
+<script>
+    // Принудительное применение стилей через JavaScript
+    (function() {
+        function initHover() {
+            const rows = document.querySelectorAll('.devices-table tbody tr.device-row');
+            console.log('Найдено строк для hover:', rows.length);
+            
+            if (rows.length === 0) {
+                console.warn('Строки с классом device-row не найдены!');
+                return;
+            }
+            
+            rows.forEach(function(row, index) {
+                // Устанавливаем начальный фон
+                row.style.backgroundColor = '#ffffff';
+                row.style.transition = 'all 0.2s';
+                
+                row.onmouseenter = function() {
+                    console.log('Hover на строке', index);
+                    // Используем setProperty с important - темнее для заметности
+                    this.style.setProperty('background-color', '#e9ecef', 'important');
+                    this.style.setProperty('transform', 'scale(1.01)', 'important');
+                    const cells = this.querySelectorAll('td, th');
+                    cells.forEach(function(cell) {
+                        cell.style.setProperty('background-color', '#e9ecef', 'important');
+                    });
+                };
+                
+                row.onmouseleave = function() {
+                    this.style.setProperty('background-color', '#ffffff', 'important');
+                    this.style.setProperty('transform', 'scale(1)', 'important');
+                    const cells = this.querySelectorAll('td, th');
+                    cells.forEach(function(cell) {
+                        cell.style.setProperty('background-color', 'transparent', 'important');
+                    });
+                };
+            });
+            
+            console.log('Hover-эффект инициализирован для', rows.length, 'строк');
+        }
+        
+        // Пробуем несколько раз
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                console.log('DOMContentLoaded - инициализация hover');
+                initHover();
+            });
+        } else {
+            console.log('DOM уже загружен - инициализация hover');
+            initHover();
+        }
+        window.addEventListener('load', function() {
+            console.log('Window loaded - повторная инициализация hover');
+            initHover();
+        });
+        setTimeout(function() {
+            console.log('Timeout - финальная инициализация hover');
+            initHover();
+        }, 500);
+    })();
+</script>
+<div class="card">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table align-middle mb-0 devices-table">
+                <thead class="text-uppercase small" style="background-color: #f8f9fa;">
+                <tr>
+                    <th class="ps-4" style="color: #2c3e50;">Инвентарный №</th>
+                    <th style="color: #2c3e50;">Модель</th>
+                    <th style="color: #2c3e50;">Тип</th>
+                    <th style="color: #2c3e50;">Локация</th>
+                    <th style="color: #2c3e50;">Владелец</th>
+                    <th style="color: #2c3e50;">Статус</th>
+                    <th class="text-end pe-4" style="color: #2c3e50;">Действия</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for device in devices %}
+                    <tr class="device-row" style="transition: all 0.2s; background-color: #ffffff;">
+                        <td class="ps-4">
+                            <a class="text-info text-decoration-none fw-semibold" href="{{ url_for('devices.device_history', device_id=device.id) }}" style="color: #3498db;">{{ device.inventory_number }}</a>
+                        </td>
+                        <td style="color: #2c3e50;">
+                            <div class="fw-semibold">{{ device.model }}</div>
+                            {% if device.serial_number %}
+                                <div class="text-muted small" style="color: #5a6c7d;">{{ device.serial_number }}</div>
+                            {% endif %}
+                        </td>
+                        <td style="color: #5a6c7d;">{{ device.type.name }}</td>
+                        <td style="color: #5a6c7d;">{{ device.location.name }}</td>
+                        <td>
+                            {% if device.owner %}
+                                <span class="badge rounded-pill bg-primary bg-opacity-25 text-primary">{{ device.owner.full_name }}</span>
+                            {% else %}
+                                <span class="badge rounded-pill bg-success bg-opacity-25 text-success">Склад</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <span class="badge bg-secondary text-uppercase">
+                                {{ device.status.value if device.status else '—' }}
+                            </span>
+                        </td>
+                        <td class="text-end pe-4">
+                            <div class="btn-group btn-group-sm">
+                                <a href="{{ url_for('devices.edit_device', device_id=device.id) }}" class="btn btn-outline-primary"><i class="bi bi-pencil"></i></a>
+                                <form method="post" action="{{ url_for('devices.delete_device', device_id=device.id) }}" onsubmit="return confirm('Удалить девайс?');">
+                                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                    <button type="submit" class="btn btn-outline-danger"><i class="bi bi-trash"></i></button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="7" class="text-center py-4" style="color: #95a5a6;">Пока нет устройств</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3 mb-4">
+    <div>
+        <h2 class="text-white mb-1">📋 Все девайсы</h2>
+        <p class="text-secondary mb-0">Всего устройств: {{ devices|length }}</p>
+    </div>
+    <div class="btn-group">
+        {% if current_user.is_authenticated and current_user.is_admin %}
+        <a href="{{ url_for('devices.import_devices') }}" class="btn btn-outline-primary"><i class="bi bi-file-earmark-excel me-1"></i>Импорт</a>
+        {% endif %}
+        <a href="{{ url_for('devices.create_device') }}" class="btn btn-outline-info"><i class="bi bi-plus-circle me-1"></i>Добавить</a>
+    </div>
+</div>
+
+{% include "devices/table.html" %}
+{% endblock %}
+
+
+
+
+
+

@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block title %}История изменений · DA{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="text-white mb-0">📜 История изменений</h3>
+    <span class="badge bg-secondary bg-opacity-25 text-secondary">Всего: {{ logs|length }}</span>
+</div>
+
+<div class="card">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-dark table-hover mb-0 align-middle">
+                <thead class="text-uppercase small text-secondary border-bottom border-secondary">
+                    <tr>
+                        <th class="ps-4">Дата/Время</th>
+                        <th>Пользователь</th>
+                        <th>Действие</th>
+                        <th>Тип объекта</th>
+                        <th>Объект</th>
+                        <th>Изменения</th>
+                        <th class="text-end pe-4">IP</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for log in logs %}
+                    <tr>
+                        <td class="ps-4 text-secondary small">{{ log.created_at.strftime('%d.%m.%Y %H:%M:%S') }}</td>
+                        <td>
+                            <div class="fw-semibold">{{ log.user.full_name }}</div>
+                            <div class="small text-muted">{{ log.user.email }}</div>
+                        </td>
+                        <td>
+                            {% if log.action.value == 'create' %}
+                                <span class="badge bg-success bg-opacity-25 text-success border border-success border-opacity-25">Создание</span>
+                            {% elif log.action.value == 'update' %}
+                                <span class="badge bg-info bg-opacity-25 text-info border border-info border-opacity-25">Изменение</span>
+                            {% elif log.action.value == 'delete' %}
+                                <span class="badge bg-danger bg-opacity-25 text-danger border border-danger border-opacity-25">Удаление</span>
+                            {% elif log.action.value == 'assign' %}
+                                <span class="badge bg-warning bg-opacity-25 text-warning border border-warning border-opacity-25">Выдача</span>
+                            {% elif log.action.value == 'return' %}
+                                <span class="badge bg-secondary bg-opacity-25 text-secondary border border-secondary border-opacity-25">Возврат</span>
+                            {% else %}
+                                <span class="badge bg-secondary">{{ log.action.value }}</span>
+                            {% endif %}
+                        </td>
+                        <td class="text-secondary small">{{ log.entity_type }}</td>
+                        <td>
+                            {% if log.entity_name %}
+                                <span class="fw-semibold">{{ log.entity_name }}</span>
+                            {% elif log.entity_id %}
+                                <span class="text-muted">ID: {{ log.entity_id }}</span>
+                            {% else %}
+                                <span class="text-muted">—</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if log.changes %}
+                                <small class="text-muted font-monospace" style="font-size: 0.75rem;">{{ log.changes[:100] }}{% if log.changes|length > 100 %}...{% endif %}</small>
+                            {% else %}
+                                <span class="text-muted">—</span>
+                            {% endif %}
+                        </td>
+                        <td class="text-end pe-4 text-muted small">{{ log.ip_address or '—' }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="7" class="text-center text-muted py-4">История пуста</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+

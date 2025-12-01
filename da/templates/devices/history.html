@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+{% block title %}История {{ device.inventory_number }} · DA{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h3 class="mb-0" style="color: #2c3e50; font-weight: 600;">📋 История девайса: {{ device.inventory_number }}</h3>
+        <p class="text-muted mb-0">{{ device.model }} · {{ device.type.name }}</p>
+    </div>
+    <a href="{{ url_for('devices.list_devices') }}" class="btn btn-secondary">
+        <i class="bi bi-arrow-left me-1"></i>Назад к списку
+    </a>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header bg-light">
+        <h5 class="mb-0" style="color: #2c3e50;">Информация о девайсе</h5>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-3">
+                <small class="text-muted text-uppercase">Текущий статус</small>
+                <div class="fw-semibold" style="color: #2c3e50;">
+                    {% if device.owner %}
+                        <span class="badge bg-primary">Выдан: {{ device.owner.full_name }}</span>
+                    {% elif device.warehouse %}
+                        <span class="badge bg-success">На складе: {{ device.warehouse.name }}</span>
+                    {% else %}
+                        <span class="badge bg-secondary">Не назначен</span>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-3">
+                <small class="text-muted text-uppercase">Локация</small>
+                <div class="fw-semibold" style="color: #2c3e50;">{{ device.location.name if device.location else '—' }}</div>
+            </div>
+            <div class="col-md-3">
+                <small class="text-muted text-uppercase">Статус</small>
+                <div class="fw-semibold" style="color: #2c3e50;">{{ device.status.value }}</div>
+            </div>
+            <div class="col-md-3">
+                <small class="text-muted text-uppercase">Серийный номер</small>
+                <div class="fw-semibold" style="color: #2c3e50;">{{ device.serial_number or '—' }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header bg-light">
+        <h5 class="mb-0" style="color: #2c3e50;">История действий</h5>
+    </div>
+    <div class="card-body p-0">
+        {% if audit_logs %}
+        <div class="table-responsive">
+            <table class="table table-hover mb-0 align-middle">
+                <thead class="text-uppercase small" style="background-color: #f8f9fa;">
+                    <tr>
+                        <th class="ps-4" style="color: #2c3e50;">Дата и время</th>
+                        <th style="color: #2c3e50;">Действие</th>
+                        <th style="color: #2c3e50;">Пользователь</th>
+                        <th style="color: #2c3e50;">Изменения</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for item in audit_logs %}
+                    {% set log = item.log %}
+                    {% set changes = item.changes %}
+                    <tr>
+                        <td class="ps-4 small" style="color: #5a6c7d;">
+                            {{ log.created_at.strftime('%d.%m.%Y %H:%M:%S') }}
+                        </td>
+                        <td>
+                            {% if log.action.value == 'create' %}
+                                <span class="badge bg-success">Создание</span>
+                            {% elif log.action.value == 'update' %}
+                                <span class="badge bg-info">Обновление</span>
+                            {% elif log.action.value == 'delete' %}
+                                <span class="badge bg-danger">Удаление</span>
+                            {% elif log.action.value == 'assign' %}
+                                <span class="badge bg-primary">Выдача</span>
+                            {% elif log.action.value == 'return' %}
+                                <span class="badge bg-warning text-dark">Возврат</span>
+                            {% elif log.action.value == 'transfer' %}
+                                <span class="badge bg-secondary">Перемещение</span>
+                            {% else %}
+                                <span class="badge bg-secondary">{{ log.action.value }}</span>
+                            {% endif %}
+                        </td>
+                        <td style="color: #2c3e50;">
+                            <div class="fw-semibold">{{ log.user.full_name }}</div>
+                            <small class="text-muted">{{ log.user.email }}</small>
+                        </td>
+                        <td style="color: #5a6c7d;">
+                            {% if changes %}
+                                <div class="small">
+                                    {% if changes is mapping %}
+                                        {% for key, value in changes.items() %}
+                                            {% if key != 'action' %}
+                                                <div class="mb-1">
+                                                    <strong>{{ key }}:</strong>
+                                                    {% if value is mapping %}
+                                                        {% if 'old' in value and 'new' in value %}
+                                                            <span class="text-danger">{{ value.old or '—' }}</span>
+                                                            <i class="bi bi-arrow-right mx-1"></i>
+                                                            <span class="text-success">{{ value.new or '—' }}</span>
+                                                        {% elif 'employee_name' in value %}
+                                                            <span class="text-primary">{{ value.employee_name }}</span>
+                                                        {% elif 'warehouse_name' in value %}
+                                                            <span class="text-primary">{{ value.warehouse_name }}</span>
+                                                        {% else %}
+                                                            {{ value }}
+                                                        {% endif %}
+                                                    {% else %}
+                                                        {{ value }}
+                                                    {% endif %}
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% if changes.action %}
+                                            <div class="mt-2 text-primary">
+                                                <i class="bi bi-info-circle me-1"></i>{{ changes.action }}
+                                            </div>
+                                        {% endif %}
+                                    {% else %}
+                                        {{ changes }}
+                                    {% endif %}
+                                </div>
+                            {% else %}
+                                <span class="text-muted">—</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="text-center py-5">
+            <p class="text-muted mb-0">История действий пуста</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+
+

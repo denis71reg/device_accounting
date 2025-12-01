@@ -1,93 +1,153 @@
-# da-python
+# DA · Device Accounting
 
+Веб‑приложение для учета девайсов компании IT Test: склады, сотрудники, выдача, возврат и история.
 
+## Стек
+- Flask 3 + Blueprints
+- SQLAlchemy + Flask-Migrate
+- Flask-Login для аутентификации
+- Bootstrap 5 интерфейс
+- Docker/Gunicorn для продакшена
 
-## Getting started
+## Быстрый старт
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+### Локальная разработка
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+```bash
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+export FLASK_APP=da.app
+flask db upgrade
+flask seed
+flask run --port 5001
+```
 
-## Add your files
+### Docker (разработка)
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+```bash
+docker compose up --build
+```
+
+### Продакшен развертывание
+
+См. подробную инструкцию в [DEPLOY.md](DEPLOY.md)
+
+**Быстрый старт для продакшена:**
+
+```bash
+# 1. Настройте .env файл
+cp env.example .env
+# Отредактируйте .env и установите SECRET_KEY
+
+# 2. Запустите скрипт развертывания
+./deploy.sh
+
+# 3. Создайте первого супер-администратора
+docker-compose -f docker-compose.prod.yml exec app flask create-superadmin \
+  email@ittest-team.ru "ФИО" --password
+```
+
+## Основные команды
+
+### Управление базой данных
+- `flask db init` — инициализация миграций
+- `flask db migrate -m "описание"` — создание миграции
+- `flask db upgrade` — применение миграций
+- `flask db downgrade` — откат миграции
+
+### Управление пользователями
+- `flask create-superadmin email@ittest-team.ru "ФИО" --password` — создание супер-администратора
+- `flask set-user-role email@ittest-team.ru super_admin` — изменение роли пользователя
+
+### Данные
+- `flask seed` — создание базовых локаций и типов девайсов
+
+### Тесты
+- `pytest` — запуск тестов
+- `pytest -q` — тихий режим
+
+## Структура проекта
 
 ```
-cd existing_repo
-git remote add origin https://code.dev-ittest.ru/ittest/device-accounting/da-python.git
-git branch -M main
-git push -uf origin main
+device_accounting/
+├── da/                    # Основное приложение
+│   ├── models.py          # Модели данных
+│   ├── routes/            # Маршруты (blueprints)
+│   ├── templates/         # Шаблоны
+│   ├── services/          # Бизнес-логика
+│   └── config.py          # Конфигурация
+├── migrations/            # Миграции базы данных
+├── instance/              # Данные приложения (БД)
+├── Dockerfile             # Docker образ
+├── docker-compose.prod.yml # Docker Compose для продакшена
+├── deploy.sh              # Скрипт развертывания
+└── DEPLOY.md              # Инструкция по развертыванию
 ```
 
-## Integrate with your tools
+## Роли пользователей
 
-- [ ] [Set up project integrations](https://code.dev-ittest.ru/ittest/device-accounting/da-python/-/settings/integrations)
+- **Супер-админ** — полный доступ, включая удаление и просмотр истории
+- **Админ** — создание и редактирование, без удаления
+- **Пользователь** — только просмотр
 
-## Collaborate with your team
+## Обновление приложения
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+См. подробную инструкцию в [UPDATE.md](UPDATE.md)
 
-## Test and Deploy
+**Быстрое обновление:**
 
-Use the built-in continuous integration in GitLab.
+```bash
+# Полное обновление (рекомендуется для релизов)
+./update.sh
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+# Быстрый хот-фикс (для срочных исправлений)
+./hotfix.sh
+```
 
-***
+**Что делают скрипты:**
+- `update.sh` — полное обновление с пересборкой образа и миграциями
+- `hotfix.sh` — быстрое обновление кода без пересборки
 
-# Editing this README
+## Безопасность
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+- Регистрация только для email @ittest-team.ru
+- CSRF защита включена
+- Пароли хранятся в хешированном виде
+- Аудит всех действий (для супер-админов)
 
-## Suggestions for a good README
+## Логирование
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+- Логи пишутся в `instance/logs/app.log` и одновременно выводятся в консоль
+- Просмотр в real-time: `tail -f instance/logs/app.log`
+- Уровень логирования настраивается через переменную `LOG_LEVEL`
 
-## Name
-Choose a self-explaining name for your project.
+## Тестирование
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+Проект покрыт автоматическими тестами для всего функционала. Тесты запускаются автоматически перед каждым деплоем и обновлением.
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+```bash
+# Запуск всех тестов
+./run_tests.sh
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+# Или напрямую через pytest
+pytest
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+# С отчетом о покрытии кода
+pytest --cov=da --cov-report=html
+```
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+**Важно:** Деплой и обновление не выполнятся, если тесты не пройдут.
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+Подробнее: [TESTING.md](TESTING.md)
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+## Документация
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+- [DEPLOY.md](DEPLOY.md) — развертывание на сервере
+- [UPDATE.md](UPDATE.md) — процесс обновления и хот-фиксов
+- [TESTING.md](TESTING.md) — руководство по тестированию
+- [DEPLOY_CHECKLIST.md](DEPLOY_CHECKLIST.md) — чеклист развертывания
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+## Поддержка
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+При возникновении проблем обращайтесь в техподдержку IT Test.

@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# Flask
+instance/
+*.db
+*.sqlite
+*.sqlite3
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+*.md
+!README.md
+
+# Logs
+logs/
+*.log
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Docker
+Dockerfile.dev
+docker-compose.yml
+docker-compose.dev.yml
+
+# Tests
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Migrations (keep structure, ignore versions)
+migrations/versions/*.pyc
+
+# OS
+.DS_Store
+Thumbs.db

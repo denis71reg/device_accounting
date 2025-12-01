@@ -1,0 +1,73 @@
+# Пример конфигурации Nginx для Device Accounting
+# Скопируйте в /etc/nginx/sites-available/da и активируйте
+
+server {
+    listen 80;
+    server_name your-domain.com;  # Замените на ваш домен
+
+    # Логи
+    access_log /var/log/nginx/da_access.log;
+    error_log /var/log/nginx/da_error.log;
+
+    # Максимальный размер загружаемых файлов
+    client_max_body_size 10M;
+
+    # Проксирование на приложение
+    location / {
+        proxy_pass http://127.0.0.1:5001;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        
+        # Таймауты
+        proxy_connect_timeout 60s;
+        proxy_send_timeout 60s;
+        proxy_read_timeout 60s;
+    }
+
+    # Статические файлы (если будут добавлены)
+    location /static {
+        alias /path/to/static;
+        expires 30d;
+        add_header Cache-Control "public, immutable";
+    }
+}
+
+# HTTPS конфигурация (после получения SSL сертификата)
+# server {
+#     listen 443 ssl http2;
+#     server_name your-domain.com;
+# 
+#     ssl_certificate /etc/letsencrypt/live/your-domain.com/fullchain.pem;
+#     ssl_certificate_key /etc/letsencrypt/live/your-domain.com/privkey.pem;
+#     ssl_protocols TLSv1.2 TLSv1.3;
+#     ssl_ciphers HIGH:!aNULL:!MD5;
+# 
+#     access_log /var/log/nginx/da_ssl_access.log;
+#     error_log /var/log/nginx/da_ssl_error.log;
+# 
+#     client_max_body_size 10M;
+# 
+#     location / {
+#         proxy_pass http://127.0.0.1:5001;
+#         proxy_set_header Host $host;
+#         proxy_set_header X-Real-IP $remote_addr;
+#         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+#         proxy_set_header X-Forwarded-Proto $scheme;
+#         
+#         proxy_connect_timeout 60s;
+#         proxy_send_timeout 60s;
+#         proxy_read_timeout 60s;
+#     }
+# }
+# 
+# # Редирект с HTTP на HTTPS
+# server {
+#     listen 80;
+#     server_name your-domain.com;
+#     return 301 https://$server_name$request_uri;
+# }
+
+
+

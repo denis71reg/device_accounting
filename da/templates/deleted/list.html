@@ -1,0 +1,231 @@
+{% extends "base.html" %}
+{% block title %}Удалено · DA{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="mb-0" style="color: #2c3e50; font-weight: 600;">🗑️ Удалено</h3>
+</div>
+
+{% if deleted_devices or deleted_employees or deleted_warehouses or deleted_locations or deleted_device_types %}
+<div class="row">
+    {% if deleted_devices %}
+    <div class="col-12 mb-4">
+        <div class="card">
+            <div class="card-header" style="background-color: #f8f9fa;">
+                <h5 class="mb-0" style="color: #2c3e50;">Девайсы ({{ deleted_devices|length }})</h5>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-hover mb-0">
+                    <thead class="text-uppercase small" style="background-color: #f8f9fa;">
+                        <tr>
+                            <th class="ps-4" style="color: #2c3e50;">Инв. номер</th>
+                            <th style="color: #2c3e50;">Модель</th>
+                            <th style="color: #2c3e50;">Удалено</th>
+                            <th class="text-end pe-4" style="color: #2c3e50;">Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for device in deleted_devices %}
+                        <tr>
+                            <td class="ps-4" style="color: #2c3e50;">{{ device.inventory_number }}</td>
+                            <td style="color: #5a6c7d;">{{ device.model }}</td>
+                            <td style="color: #5a6c7d;">{{ device.deleted_at.strftime('%d.%m.%Y %H:%M') if device.deleted_at else '—' }}</td>
+                            <td class="text-end pe-4">
+                                <div class="btn-group btn-group-sm">
+                                    <form method="post" action="{{ url_for('deleted.restore_entity', entity_type='device', entity_id=device.id) }}" style="display: inline;">
+                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                        <button type="submit" class="btn btn-outline-success"><i class="bi bi-arrow-counterclockwise"></i> Восстановить</button>
+                                    </form>
+                                    <form method="post" action="{{ url_for('deleted.permanent_delete_entity', entity_type='device', entity_id=device.id) }}" onsubmit="return confirm('Окончательно удалить девайс? Это действие нельзя отменить.');" style="display: inline;">
+                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                        <button type="submit" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i> Удалить</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if deleted_employees %}
+    <div class="col-12 mb-4">
+        <div class="card">
+            <div class="card-header" style="background-color: #f8f9fa;">
+                <h5 class="mb-0" style="color: #2c3e50;">Сотрудники ({{ deleted_employees|length }})</h5>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-hover mb-0">
+                    <thead class="text-uppercase small" style="background-color: #f8f9fa;">
+                        <tr>
+                            <th class="ps-4" style="color: #2c3e50;">ФИО</th>
+                            <th style="color: #2c3e50;">Должность</th>
+                            <th style="color: #2c3e50;">Удалено</th>
+                            <th class="text-end pe-4" style="color: #2c3e50;">Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for employee in deleted_employees %}
+                        <tr>
+                            <td class="ps-4" style="color: #2c3e50;">{{ employee.full_name }}</td>
+                            <td style="color: #5a6c7d;">{{ employee.position }}</td>
+                            <td style="color: #5a6c7d;">{{ employee.deleted_at.strftime('%d.%m.%Y %H:%M') if employee.deleted_at else '—' }}</td>
+                            <td class="text-end pe-4">
+                                <div class="btn-group btn-group-sm">
+                                    <form method="post" action="{{ url_for('deleted.restore_entity', entity_type='employee', entity_id=employee.id) }}" style="display: inline;">
+                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                        <button type="submit" class="btn btn-outline-success"><i class="bi bi-arrow-counterclockwise"></i> Восстановить</button>
+                                    </form>
+                                    <form method="post" action="{{ url_for('deleted.permanent_delete_entity', entity_type='employee', entity_id=employee.id) }}" onsubmit="return confirm('Окончательно удалить сотрудника? Это действие нельзя отменить.');" style="display: inline;">
+                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                        <button type="submit" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i> Удалить</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if deleted_warehouses %}
+    <div class="col-12 mb-4">
+        <div class="card">
+            <div class="card-header" style="background-color: #f8f9fa;">
+                <h5 class="mb-0" style="color: #2c3e50;">Склады ({{ deleted_warehouses|length }})</h5>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-hover mb-0">
+                    <thead class="text-uppercase small" style="background-color: #f8f9fa;">
+                        <tr>
+                            <th class="ps-4" style="color: #2c3e50;">Название</th>
+                            <th style="color: #2c3e50;">Локация</th>
+                            <th style="color: #2c3e50;">Удалено</th>
+                            <th class="text-end pe-4" style="color: #2c3e50;">Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for warehouse in deleted_warehouses %}
+                        <tr>
+                            <td class="ps-4" style="color: #2c3e50;">{{ warehouse.name }}</td>
+                            <td style="color: #5a6c7d;">{{ warehouse.location.name if warehouse.location else '—' }}</td>
+                            <td style="color: #5a6c7d;">{{ warehouse.deleted_at.strftime('%d.%m.%Y %H:%M') if warehouse.deleted_at else '—' }}</td>
+                            <td class="text-end pe-4">
+                                <div class="btn-group btn-group-sm">
+                                    <form method="post" action="{{ url_for('deleted.restore_entity', entity_type='warehouse', entity_id=warehouse.id) }}" style="display: inline;">
+                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                        <button type="submit" class="btn btn-outline-success"><i class="bi bi-arrow-counterclockwise"></i> Восстановить</button>
+                                    </form>
+                                    <form method="post" action="{{ url_for('deleted.permanent_delete_entity', entity_type='warehouse', entity_id=warehouse.id) }}" onsubmit="return confirm('Окончательно удалить склад? Это действие нельзя отменить.');" style="display: inline;">
+                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                        <button type="submit" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i> Удалить</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if deleted_locations %}
+    <div class="col-12 mb-4">
+        <div class="card">
+            <div class="card-header" style="background-color: #f8f9fa;">
+                <h5 class="mb-0" style="color: #2c3e50;">Локации ({{ deleted_locations|length }})</h5>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-hover mb-0">
+                    <thead class="text-uppercase small" style="background-color: #f8f9fa;">
+                        <tr>
+                            <th class="ps-4" style="color: #2c3e50;">Название</th>
+                            <th style="color: #2c3e50;">Удалено</th>
+                            <th class="text-end pe-4" style="color: #2c3e50;">Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for location in deleted_locations %}
+                        <tr>
+                            <td class="ps-4" style="color: #2c3e50;">{{ location.name }}</td>
+                            <td style="color: #5a6c7d;">{{ location.deleted_at.strftime('%d.%m.%Y %H:%M') if location.deleted_at else '—' }}</td>
+                            <td class="text-end pe-4">
+                                <div class="btn-group btn-group-sm">
+                                    <form method="post" action="{{ url_for('deleted.restore_entity', entity_type='location', entity_id=location.id) }}" style="display: inline;">
+                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                        <button type="submit" class="btn btn-outline-success"><i class="bi bi-arrow-counterclockwise"></i> Восстановить</button>
+                                    </form>
+                                    <form method="post" action="{{ url_for('deleted.permanent_delete_entity', entity_type='location', entity_id=location.id) }}" onsubmit="return confirm('Окончательно удалить локацию? Это действие нельзя отменить.');" style="display: inline;">
+                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                        <button type="submit" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i> Удалить</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if deleted_device_types %}
+    <div class="col-12 mb-4">
+        <div class="card">
+            <div class="card-header" style="background-color: #f8f9fa;">
+                <h5 class="mb-0" style="color: #2c3e50;">Типы девайсов ({{ deleted_device_types|length }})</h5>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-hover mb-0">
+                    <thead class="text-uppercase small" style="background-color: #f8f9fa;">
+                        <tr>
+                            <th class="ps-4" style="color: #2c3e50;">Название</th>
+                            <th style="color: #2c3e50;">Удалено</th>
+                            <th class="text-end pe-4" style="color: #2c3e50;">Действия</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for device_type in deleted_device_types %}
+                        <tr>
+                            <td class="ps-4" style="color: #2c3e50;">{{ device_type.name }}</td>
+                            <td style="color: #5a6c7d;">{{ device_type.deleted_at.strftime('%d.%m.%Y %H:%M') if device_type.deleted_at else '—' }}</td>
+                            <td class="text-end pe-4">
+                                <div class="btn-group btn-group-sm">
+                                    <form method="post" action="{{ url_for('deleted.restore_entity', entity_type='device_type', entity_id=device_type.id) }}" style="display: inline;">
+                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                        <button type="submit" class="btn btn-outline-success"><i class="bi bi-arrow-counterclockwise"></i> Восстановить</button>
+                                    </form>
+                                    <form method="post" action="{{ url_for('deleted.permanent_delete_entity', entity_type='device_type', entity_id=device_type.id) }}" onsubmit="return confirm('Окончательно удалить тип девайса? Это действие нельзя отменить.');" style="display: inline;">
+                                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                        <button type="submit" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i> Удалить</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% else %}
+<div class="card">
+    <div class="card-body text-center py-5">
+        <i class="bi bi-trash" style="font-size: 3rem; color: #95a5a6;"></i>
+        <p class="mt-3 mb-0" style="color: #95a5a6;">Нет удаленных объектов</p>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+
+

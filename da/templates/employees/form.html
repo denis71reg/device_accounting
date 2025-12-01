@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Редактировать' if employee else 'Новый' }} сотрудник · DA{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header text-center border-0 pt-4">
+                <h4 class="mb-0">{{ 'Редактировать сотрудника' if employee else 'Новый сотрудник' }}</h4>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label small text-uppercase">Фамилия <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="last_name" value="{{ employee.last_name if employee else '' }}" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label small text-uppercase">Имя <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="first_name" value="{{ employee.first_name if employee else '' }}" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label small text-uppercase">Отчество</label>
+                            <input type="text" class="form-control" name="middle_name" value="{{ employee.middle_name if employee else '' }}">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small text-uppercase">Должность</label>
+                        <input type="text" class="form-control" name="position" value="{{ employee.position if employee else '' }}" required>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label small text-uppercase">Email</label>
+                            <input type="email" class="form-control" name="email" value="{{ employee.email if employee else '' }}" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label small text-uppercase">Телефон</label>
+                            <input type="text" class="form-control" name="phone" value="{{ employee.phone if employee else '' }}" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small text-uppercase">Telegram</label>
+                        <input type="text" class="form-control" name="telegram" value="{{ employee.telegram if employee else '' }}" placeholder="@username">
+                        <small class="form-text text-muted">Для оповещений через чат-бот</small>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label small text-uppercase">Локация <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" name="location_name" value="{{ employee.location.name if employee and employee.location else '' }}" required placeholder="Например: Москва, Тула, Санкт-Петербург">
+                        <small class="text-muted">Введите название локации. Если локация уже существует, она будет использована, иначе будет создана новая.</small>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-success" type="submit">Сохранить</button>
+                        <a href="{{ url_for('employees.list_employees') }}" class="btn btn-outline-secondary border-0">Отмена</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

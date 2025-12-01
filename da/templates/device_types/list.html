@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Типы девайсов · DA{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="mb-0" style="color: #2c3e50; font-weight: 600;">📱 Типы девайсов</h3>
+    {% if current_user.is_admin %}
+    <a href="{{ url_for('device_types.create_device_type') }}" class="btn btn-primary"><i class="bi bi-plus-lg me-1"></i>Добавить</a>
+    {% endif %}
+</div>
+
+<div class="card">
+    <div class="card-body p-0">
+        <table class="table table-hover mb-0 align-middle">
+            <thead class="text-uppercase small" style="background-color: #f8f9fa;">
+                <tr>
+                    <th class="ps-4" style="color: #2c3e50;">Название</th>
+                    <th style="color: #2c3e50;" class="text-center">Девайсы</th>
+                    {% if current_user.is_admin %}
+                    <th class="text-end pe-4" style="color: #2c3e50;">Действия</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+            {% for device_type, device_count in types_with_counts %}
+                <tr>
+                    <td class="ps-4 fw-semibold" style="color: #2c3e50; font-size: 1rem;">{{ device_type.name }}</td>
+                    <td class="text-center" style="color: #5a6c7d;">{{ device_count }}</td>
+                    {% if current_user.is_admin %}
+                    <td class="text-end pe-4">
+                        <div class="btn-group btn-group-sm">
+                            <a href="{{ url_for('device_types.edit_device_type', device_type_id=device_type.id) }}" class="btn btn-outline-primary"><i class="bi bi-pencil"></i></a>
+                            {% if current_user.is_super_admin %}
+                            <form method="post" action="{{ url_for('device_types.delete_device_type', device_type_id=device_type.id) }}" onsubmit="return confirm('Удалить тип девайса?');" style="display: inline;">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <button type="submit" class="btn btn-outline-danger"><i class="bi bi-trash"></i></button>
+                            </form>
+                            {% endif %}
+                        </div>
+                    </td>
+                    {% endif %}
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="{% if current_user.is_admin %}3{% else %}2{% endif %}" class="text-center py-4" style="color: #95a5a6;">Типов девайсов нет</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+
