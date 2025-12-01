@@ -5,7 +5,8 @@
 
 set -e
 
-GIT_REPO="https://github.com/denis71reg/device_accounting.git"
+GIT_REPO="https://code.dev-ittest.ru/ittest/device-accounting/da-python.git"
+# Резервный: https://github.com/denis71reg/device_accounting.git
 PROJECT_DIR="/opt/device_accounting"  # Измените на вашу директорию
 BRANCH="main"
 
