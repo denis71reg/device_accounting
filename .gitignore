@@ -39,8 +39,12 @@ htmlcov/
 *.sublime-project
 *.sublime-workspace
 
-# Игнорировать временные скрипты деплоя (можно добавить вручную если нужно)
-# deploy_*.sh
-# update_*.sh
-# *_DEPLOY*.md
-# *_DEPLOY*.txt
+# Игнорировать временные скрипты деплоя с паролями
+deploy_via_2022.sh
+deploy_with_password.sh
+deploy_external.sh
+*_DEPLOY*.md
+*_DEPLOY*.txt
+UPDATE*.md
+UPDATE*.txt
+COPY_TO_SERVER.txt
