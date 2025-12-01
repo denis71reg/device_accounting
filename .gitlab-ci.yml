@@ -58,18 +58,28 @@ deploy:
       echo "🚀 Начало деплоя на $SERVER_USER@$SERVER_HOST:$SERVER_PORT → $DEPLOY_PATH"
       ssh -p $SERVER_PORT -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $SERVER_USER@$SERVER_HOST bash << 'ENDSSH'
         set -e
-        echo "📂 Переход в директорию проекта..."
-        cd $DEPLOY_PATH 2>/dev/null || {
+        
+        # Проверка: если папка есть, но это не git-репозиторий — удаляем
+        if [ -d "$DEPLOY_PATH" ] && [ ! -d "$DEPLOY_PATH/.git" ]; then
+          echo "⚠️ Папка $DEPLOY_PATH существует, но это не Git репозиторий. Удаляю..."
+          rm -rf "$DEPLOY_PATH"
+        fi
+
+        # Если папки нет — клонируем
+        if [ ! -d "$DEPLOY_PATH" ]; then
           echo "📥 Проект не найден, клонирую..."
           mkdir -p /opt
           cd /opt
           git clone https://code.dev-ittest.ru/ittest/device-accounting/da-python.git device_accounting
           cd device_accounting
-        }
-        
-        echo "📥 Обновление кода из GitLab..."
-        git fetch origin
-        git reset --hard origin/main 2>/dev/null || git reset --hard origin/master
+        else
+          # Если папка есть — обновляем
+          echo "📂 Переход в директорию проекта..."
+          cd $DEPLOY_PATH
+          echo "📥 Обновление кода из GitLab..."
+          git fetch origin
+          git reset --hard origin/main 2>/dev/null || git reset --hard origin/master
+        fi
         
         echo "🔨 Остановка старых контейнеров..."
         docker-compose -f docker-compose.prod.yml down || true
