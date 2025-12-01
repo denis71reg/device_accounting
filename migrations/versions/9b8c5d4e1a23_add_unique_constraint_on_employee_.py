@@ -26,3 +26,5 @@ def downgrade():
         batch_op.drop_constraint('uq_employees_telegram', type_='unique')
 
 
+
+

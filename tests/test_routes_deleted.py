@@ -26,9 +26,13 @@ class TestDeletedList:
 
     def test_list_deleted_accessible_by_super_admin(self, client, super_admin_user, device, location, warehouse, db_session):
         """Тест: супер-админ может просматривать удаленные объекты."""
+        # Используем известный inventory_number из fixture
+        inventory_number = "INV-001"
+        
         # Мягко удаляем девайс
         with client.application.app_context():
-            device.deleted_at = datetime.now(timezone.utc)
+            device_obj = Device.query.filter_by(inventory_number=inventory_number).first()
+            device_obj.deleted_at = datetime.now(timezone.utc)
             db_session.commit()
 
         client.post(url_for("auth.login"), data={
@@ -37,11 +41,7 @@ class TestDeletedList:
         })
         response = client.get(url_for("deleted.list_deleted"))
         assert response.status_code == 200
-        # Получаем inventory_number в контексте
-        with client.application.app_context():
-            device_obj = Device.query.get(device.id)
-            if device_obj:
-                assert device_obj.inventory_number.encode('utf-8') in response.data
+        assert inventory_number.encode('utf-8') in response.data
 
 
 class TestRestoreEntity:
@@ -49,35 +49,33 @@ class TestRestoreEntity:
 
     def test_restore_entity_requires_super_admin(self, client, admin_user, device, location, warehouse, db_session):
         """Тест: восстановление требует прав супер-админа."""
+        # Используем известный inventory_number из fixture
         with client.application.app_context():
-            device.deleted_at = datetime.now(timezone.utc)
+            device_obj = Device.query.filter_by(inventory_number="INV-001").first()
+            device_id = device_obj.id
+            device_obj.deleted_at = datetime.now(timezone.utc)
             db_session.commit()
 
         client.post(url_for("auth.login"), data={
             "email": "admin@ittest-team.ru",
             "password": "TestPassword123!"
         })
-        # Получаем ID девайса в контексте
-        with client.application.app_context():
-            device_obj = Device.query.get(device.id)
-            device_id = device_obj.id if device_obj else device.id
         response = client.post(url_for("deleted.restore_entity", entity_type="device", entity_id=device_id))
         assert response.status_code == 403
 
     def test_restore_entity_by_super_admin(self, client, super_admin_user, device, location, warehouse, db_session):
         """Тест: супер-админ может восстановить удаленный объект."""
+        # Используем известный inventory_number из fixture
         with client.application.app_context():
-            device.deleted_at = datetime.now(timezone.utc)
+            device_obj = Device.query.filter_by(inventory_number="INV-001").first()
+            device_id = device_obj.id
+            device_obj.deleted_at = datetime.now(timezone.utc)
             db_session.commit()
 
         client.post(url_for("auth.login"), data={
             "email": "superadmin@ittest-team.ru",
             "password": "TestPassword123!"
         })
-        # Получаем ID девайса в контексте
-        with client.application.app_context():
-            device_obj = Device.query.get(device.id)
-            device_id = device_obj.id if device_obj else device.id
         
         response = client.post(
             url_for("deleted.restore_entity", entity_type="device", entity_id=device_id),
@@ -97,36 +95,33 @@ class TestPermanentDeleteEntity:
 
     def test_permanent_delete_requires_super_admin(self, client, admin_user, device, location, warehouse, db_session):
         """Тест: окончательное удаление требует прав супер-админа."""
+        # Используем известный inventory_number из fixture
         with client.application.app_context():
-            device.deleted_at = datetime.now(timezone.utc)
+            device_obj = Device.query.filter_by(inventory_number="INV-001").first()
+            device_id = device_obj.id
+            device_obj.deleted_at = datetime.now(timezone.utc)
             db_session.commit()
 
         client.post(url_for("auth.login"), data={
             "email": "admin@ittest-team.ru",
             "password": "TestPassword123!"
         })
-        # Получаем ID девайса в контексте
-        with client.application.app_context():
-            device_obj = Device.query.get(device.id)
-            device_id = device_obj.id if device_obj else device.id
         response = client.post(url_for("deleted.permanent_delete_entity", entity_type="device", entity_id=device_id))
         assert response.status_code == 403
 
     def test_permanent_delete_by_super_admin(self, client, super_admin_user, device, location, warehouse, db_session):
         """Тест: супер-админ может окончательно удалить объект."""
+        # Используем известный inventory_number из fixture
         with client.application.app_context():
-            device.deleted_at = datetime.now(timezone.utc)
-            device_id = device.id
+            device_obj = Device.query.filter_by(inventory_number="INV-001").first()
+            device_id = device_obj.id
+            device_obj.deleted_at = datetime.now(timezone.utc)
             db_session.commit()
 
         client.post(url_for("auth.login"), data={
             "email": "superadmin@ittest-team.ru",
             "password": "TestPassword123!"
         })
-        # Получаем ID девайса в контексте
-        with client.application.app_context():
-            device_obj = Device.query.get(device.id)
-            device_id = device_obj.id if device_obj else device.id
         
         response = client.post(
             url_for("deleted.permanent_delete_entity", entity_type="device", entity_id=device_id),

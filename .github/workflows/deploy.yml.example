@@ -1,0 +1,39 @@
+# Пример GitHub Actions workflow для автоматического деплоя
+# Скопируйте в .github/workflows/deploy.yml и настройте secrets
+
+name: Deploy to Production
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:  # Позволяет запускать вручную
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Deploy to server via SSH
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT || 22 }}
+          script: |
+            cd /path/to/device_accounting
+            ./update.sh
+      
+      - name: Notify deployment status
+        if: always()
+        run: |
+          echo "Deployment completed with status: ${{ job.status }}"
+          # Здесь можно добавить уведомления (Telegram, Slack, email)
+
+
+
+
+

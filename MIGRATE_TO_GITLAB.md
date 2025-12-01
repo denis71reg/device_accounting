@@ -69,3 +69,4 @@ git remote set-url --add --push origin https://code.dev-ittest.ru/ittest/device-
 - В репозитории были пароли (уже удалены, но остались в истории)
 - Сделайте GitHub репозиторий приватным: Settings → Make private
 
+

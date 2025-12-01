@@ -1,0 +1,1657 @@
+2025-11-27 21:34:05,438 INFO [da.services.inventory:54] - Обновлён девайс 70000000310 (1)
+2025-11-27 21:34:05,443 INFO [da.services.audit:39] - AUDIT update entity=device(1) user=denis@ittest-team.ru
+2025-11-27 21:34:05,444 INFO [da.routes.devices:98] - Обновлён девайс 70000000310 (1)
+2025-11-27 21:35:48,647 INFO [da.services.inventory:54] - Обновлён девайс 70000000310 (1)
+2025-11-27 21:35:48,650 INFO [da.services.audit:39] - AUDIT update entity=device(1) user=denis@ittest-team.ru
+2025-11-27 21:35:48,651 INFO [da.routes.devices:98] - Обновлён девайс 70000000310 (1)
+2025-11-27 21:46:19,664 INFO [da.services.inventory:54] - Обновлён девайс 70000000310 (1)
+2025-11-27 21:46:19,667 INFO [da.services.audit:39] - AUDIT update entity=device(1) user=denis@ittest-team.ru
+2025-11-27 21:46:19,668 INFO [da.routes.devices:98] - Обновлён девайс 70000000310 (1)
+2025-11-27 21:56:12,179 INFO [da.services.inventory:68] - Девайс 70000000310 (1) выдан сотруднику Трофимов Дмитрий
+2025-11-27 21:56:12,184 INFO [da.services.audit:39] - AUDIT assign entity=device(1) user=denis@ittest-team.ru
+2025-11-27 21:56:12,185 INFO [da.routes.devices:237] - Девайс 70000000310 (1) выдан сотруднику Трофимов Дмитрий
+2025-11-27 21:56:36,164 INFO [da.services.inventory:54] - Обновлён девайс 70000000310 (1)
+2025-11-27 21:56:36,172 INFO [da.services.audit:39] - AUDIT assign entity=device(1) user=denis@ittest-team.ru
+2025-11-27 21:56:36,172 INFO [da.routes.devices:182] - Обновлён девайс 70000000310 (1)
+2025-11-27 22:04:29,098 ERROR [DA:875] - Exception on /auth/logout [GET]
+Traceback (most recent call last):
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/da/routes/auth.py", line 92, in logout
+    logger.info("Пользователь %s вышел из системы", current_user.email)
+                                                    ^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUserMixin' object has no attribute 'email'
+2025-11-27 22:04:42,112 INFO [da.routes.auth:27] - Пользователь denis@ittest-team.ru вошёл в систему
+2025-11-27 22:04:42,117 ERROR [DA:875] - Exception on /auth/logout [GET]
+Traceback (most recent call last):
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/da/routes/auth.py", line 92, in logout
+    logger.info("Пользователь %s вышел из системы", current_user.email)
+                                                    ^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUserMixin' object has no attribute 'email'
+2025-11-27 22:04:56,139 INFO [da.routes.auth:27] - Пользователь denis@ittest-team.ru вошёл в систему
+2025-11-27 22:04:58,560 ERROR [DA:875] - Exception on /auth/logout [GET]
+Traceback (most recent call last):
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/da/routes/auth.py", line 92, in logout
+    logger.info("Пользователь %s вышел из системы", current_user.email)
+                                                    ^^^^^^^^^^^^^^^^^^
+AttributeError: 'AnonymousUserMixin' object has no attribute 'email'
+2025-11-27 22:07:23,553 INFO [da.routes.auth:27] - Пользователь denis@ittest-team.ru вошёл в систему
+2025-11-27 22:07:23,557 ERROR [DA:875] - Exception on /auth/logout [GET]
+Traceback (most recent call last):
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/da/routes/auth.py", line 92, in logout
+    logout_user()
+    
+AttributeError: 'AnonymousUserMixin' object has no attribute 'email'
+2025-11-27 22:07:32,111 INFO [da.routes.auth:27] - Пользователь denis@ittest-team.ru вошёл в систему
+2025-11-27 22:07:34,381 ERROR [DA:875] - Exception on /auth/logout [GET]
+Traceback (most recent call last):
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/da/routes/auth.py", line 92, in logout
+    logout_user()
+    
+AttributeError: 'AnonymousUserMixin' object has no attribute 'email'
+2025-11-27 22:07:56,760 INFO [da.routes.auth:27] - Пользователь denis@ittest-team.ru вошёл в систему
+2025-11-27 22:11:29,746 INFO [da.routes.auth:104] - Пользователь denis@ittest-team.ru вышел из системы
+2025-11-27 22:11:31,563 INFO [da.routes.auth:27] - Пользователь denis@ittest-team.ru вошёл в систему
+2025-11-27 22:11:34,123 ERROR [DA:875] - Exception on /warehouses/ [GET]
+Traceback (most recent call last):
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: warehouses.location_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/da/routes/warehouses.py", line 19, in list_warehouses
+    warehouses = Warehouse.query.order_by(Warehouse.name).all()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/query.py", line 2704, in all
+    return self._iter().all()  # type: ignore
+           ~~~~~~~~~~^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/query.py", line 2857, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+        params,
+        ^^^^^^^
+        execution_options={"_sa_orm_load_options": self.load_options},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        conn,
+        ^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+        statement, params or {}, execution_options=execution_options
+    )
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: warehouses.location_id
+[SQL: SELECT warehouses.id AS warehouses_id, warehouses.name AS warehouses_name, warehouses.address AS warehouses_address, warehouses.location_id AS warehouses_location_id, warehouses.created_at AS warehouses_created_at, warehouses.updated_at AS warehouses_updated_at 
+FROM warehouses ORDER BY warehouses.name]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-11-27 22:13:46,002 INFO [da.services.audit:39] - AUDIT delete entity=warehouse(1) user=denis@ittest-team.ru
+2025-11-27 22:13:46,002 INFO [da.routes.warehouses:114] - Удалён склад Главный склад (1)
+2025-11-27 22:26:37,471 INFO [da.services.audit:39] - AUDIT create entity=warehouse(1) user=denis@ittest-team.ru
+2025-11-27 22:26:37,472 INFO [da.routes.warehouses:57] - Создан склад WareHouse Tula (Денис) (1)
+2025-11-27 22:26:50,978 INFO [da.services.audit:39] - AUDIT create entity=warehouse(2) user=denis@ittest-team.ru
+2025-11-27 22:26:50,978 INFO [da.routes.warehouses:57] - Создан склад WareHouse Tula (Саша) (2)
+2025-11-27 22:26:59,831 INFO [da.services.audit:39] - AUDIT create entity=warehouse(3) user=denis@ittest-team.ru
+2025-11-27 22:26:59,832 INFO [da.routes.warehouses:57] - Создан склад WareHouse Tula (Шкаф) (3)
+2025-11-27 22:27:21,413 INFO [da.routes.warehouses:40] - Создана новая локация: СПБ
+2025-11-27 22:27:21,421 INFO [da.services.audit:39] - AUDIT create entity=warehouse(4) user=denis@ittest-team.ru
+2025-11-27 22:27:21,423 INFO [da.routes.warehouses:57] - Создан склад WareHouse SPB (4)
+2025-11-27 22:29:46,472 INFO [da.services.inventory:55] - Обновлён девайс 70000000310 (1)
+2025-11-27 22:29:46,480 INFO [da.services.audit:39] - AUDIT transfer entity=device(1) user=denis@ittest-team.ru
+2025-11-27 22:29:46,481 INFO [da.routes.devices:235] - Обновлён девайс 70000000310 (1)
+2025-11-27 22:29:57,241 INFO [da.services.inventory:55] - Обновлён девайс 70000000310 (1)
+2025-11-27 22:29:57,247 INFO [da.services.audit:39] - AUDIT transfer entity=device(1) user=denis@ittest-team.ru
+2025-11-27 22:29:57,249 INFO [da.routes.devices:235] - Обновлён девайс 70000000310 (1)
+2025-11-27 22:30:40,749 INFO [da.services.inventory:55] - Обновлён девайс 70000000310 (1)
+2025-11-27 22:30:40,754 INFO [da.services.audit:39] - AUDIT transfer entity=device(1) user=denis@ittest-team.ru
+2025-11-27 22:30:40,755 INFO [da.routes.devices:235] - Обновлён девайс 70000000310 (1)
+2025-11-27 22:30:52,076 INFO [da.services.inventory:55] - Обновлён девайс 70000000310 (1)
+2025-11-27 22:30:52,082 INFO [da.services.audit:39] - AUDIT assign entity=device(1) user=denis@ittest-team.ru
+2025-11-27 22:30:52,083 INFO [da.routes.devices:235] - Обновлён девайс 70000000310 (1)
+2025-11-27 22:31:18,237 INFO [da.services.inventory:55] - Обновлён девайс 70000000310 (1)
+2025-11-27 22:31:18,243 INFO [da.services.audit:39] - AUDIT transfer entity=device(1) user=denis@ittest-team.ru
+2025-11-27 22:31:18,244 INFO [da.routes.devices:235] - Обновлён девайс 70000000310 (1)
+2025-11-27 22:33:17,994 INFO [da.services.inventory:55] - Обновлён девайс 70000000310 (1)
+2025-11-27 22:33:18,000 INFO [da.services.audit:39] - AUDIT transfer entity=device(1) user=denis@ittest-team.ru
+2025-11-27 22:33:18,002 INFO [da.routes.devices:235] - Обновлён девайс 70000000310 (1)
+2025-11-27 22:33:32,083 INFO [da.services.inventory:55] - Обновлён девайс 70000000310 (1)
+2025-11-27 22:33:32,089 INFO [da.services.audit:39] - AUDIT transfer entity=device(1) user=denis@ittest-team.ru
+2025-11-27 22:33:32,090 INFO [da.routes.devices:235] - Обновлён девайс 70000000310 (1)
+2025-11-27 22:34:17,127 INFO [da.services.inventory:55] - Обновлён девайс 70000000310 (1)
+2025-11-27 22:34:17,133 INFO [da.services.audit:39] - AUDIT transfer entity=device(1) user=denis@ittest-team.ru
+2025-11-27 22:34:17,135 INFO [da.routes.devices:235] - Обновлён девайс 70000000310 (1)
+2025-11-27 22:44:04,165 INFO [da.services.inventory:55] - Обновлён девайс 70000000310 (1)
+2025-11-27 22:44:04,174 INFO [da.services.audit:39] - AUDIT assign entity=device(1) user=denis@ittest-team.ru
+2025-11-27 22:44:04,175 INFO [da.routes.devices:272] - Обновлён девайс 70000000310 (1)
+2025-11-27 22:55:42,145 INFO [da.routes.auth:27] - Пользователь denis@ittest-team.ru вошёл в систему
+2025-11-27 22:56:28,348 INFO [da.routes.auth:27] - Пользователь denis@ittest-team.ru вошёл в систему
+2025-11-27 23:02:57,256 INFO [da.routes.employees:112] - Создана новая локация: Т
+2025-11-27 23:02:57,269 INFO [da.services.audit:39] - AUDIT create entity=employee(2) user=denis@ittest-team.ru
+2025-11-27 23:02:57,270 INFO [da.routes.employees:160] - Создан сотрудник Чекрыгин Денис Владимирович (denis@ittest-team.ru)
+2025-11-27 23:03:17,178 INFO [da.services.audit:39] - AUDIT update entity=employee(2) user=denis@ittest-team.ru
+2025-11-27 23:03:17,179 INFO [da.routes.employees:260] - Обновлены данные сотрудника Чекрыгин Денис Владимирович
+2025-11-27 23:09:45,365 INFO [da.routes.auth:27] - Пользователь denis@ittest-team.ru вошёл в систему
+2025-11-27 23:10:50,742 INFO [da.routes.auth:27] - Пользователь denis@ittest-team.ru вошёл в систему
+2025-11-27 23:13:22,365 INFO [da.services.audit:39] - AUDIT create entity=device_type(5) user=denis@ittest-team.ru
+2025-11-27 23:13:22,366 INFO [da.routes.device_types:50] - Создан тип девайса MacBook (5)
+2025-11-27 23:17:57,893 ERROR [DA:875] - Exception on /devices/create [GET]
+Traceback (most recent call last):
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: users.deleted_at
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/da/utils.py", line 31, in decorated_function
+    if not current_user.is_authenticated:
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/werkzeug/local.py", line 318, in __get__
+    obj = instance._get_current_object()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/werkzeug/local.py", line 526, in _get_current_object
+    return get_name(local())
+                    ~~~~~^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask_login/utils.py", line 25, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+                                      ~~~~~~~~~^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask_login/utils.py", line 370, in _get_user
+    current_app.login_manager._load_user()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask_login/login_manager.py", line 364, in _load_user
+    user = self._user_callback(user_id)
+  File "/Users/denische/Documents/device_accounting/da/__init__.py", line 22, in load_user
+    return User.query.get(int(user_id))
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<string>", line 2, in get
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/util/deprecations.py", line 386, in warned
+    return fn(*args, **kwargs)  # type: ignore[no-any-return]
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/query.py", line 1126, in get
+    return self._get_impl(ident, loading.load_on_pk_identity)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/query.py", line 1135, in _get_impl
+    return self.session._get_impl(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        mapper,
+        ^^^^^^^
+    ...<6 lines>...
+        execution_options=self._execution_options,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 3859, in _get_impl
+    return db_load_fn(
+        self,
+    ...<5 lines>...
+        bind_arguments=bind_arguments,
+    )
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/loading.py", line 695, in load_on_pk_identity
+    session.execute(
+    ~~~~~~~~~~~~~~~^
+        q,
+        ^^
+    ...<2 lines>...
+        bind_arguments=bind_arguments,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        conn,
+        ^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+        statement, params or {}, execution_options=execution_options
+    )
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: users.deleted_at
+[SQL: SELECT users.id AS users_id, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.phone AS users_phone, users.telegram AS users_telegram, users.role AS users_role, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.deleted_at AS users_deleted_at 
+FROM users 
+WHERE users.id = ?]
+[parameters: (1,)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-11-27 23:19:05,698 ERROR [DA:875] - Exception on /devices/create [GET]
+Traceback (most recent call last):
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: users.deleted_at
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/da/utils.py", line 31, in decorated_function
+    if not current_user.is_authenticated:
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/werkzeug/local.py", line 318, in __get__
+    obj = instance._get_current_object()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/werkzeug/local.py", line 526, in _get_current_object
+    return get_name(local())
+                    ~~~~~^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask_login/utils.py", line 25, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+                                      ~~~~~~~~~^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask_login/utils.py", line 370, in _get_user
+    current_app.login_manager._load_user()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask_login/login_manager.py", line 364, in _load_user
+    user = self._user_callback(user_id)
+  File "/Users/denische/Documents/device_accounting/da/__init__.py", line 22, in load_user
+    return User.query.get(int(user_id))
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<string>", line 2, in get
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/util/deprecations.py", line 386, in warned
+    return fn(*args, **kwargs)  # type: ignore[no-any-return]
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/query.py", line 1126, in get
+    return self._get_impl(ident, loading.load_on_pk_identity)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/query.py", line 1135, in _get_impl
+    return self.session._get_impl(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        mapper,
+        ^^^^^^^
+    ...<6 lines>...
+        execution_options=self._execution_options,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 3859, in _get_impl
+    return db_load_fn(
+        self,
+    ...<5 lines>...
+        bind_arguments=bind_arguments,
+    )
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/loading.py", line 695, in load_on_pk_identity
+    session.execute(
+    ~~~~~~~~~~~~~~~^
+        q,
+        ^^
+    ...<2 lines>...
+        bind_arguments=bind_arguments,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        conn,
+        ^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+        statement, params or {}, execution_options=execution_options
+    )
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: users.deleted_at
+[SQL: SELECT users.id AS users_id, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.phone AS users_phone, users.telegram AS users_telegram, users.role AS users_role, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.deleted_at AS users_deleted_at 
+FROM users 
+WHERE users.id = ?]
+[parameters: (1,)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-11-27 23:19:08,197 ERROR [DA:875] - Exception on /employees/ [GET]
+Traceback (most recent call last):
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: users.deleted_at
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask_login/utils.py", line 284, in decorated_view
+    elif not current_user.is_authenticated:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/werkzeug/local.py", line 318, in __get__
+    obj = instance._get_current_object()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/werkzeug/local.py", line 526, in _get_current_object
+    return get_name(local())
+                    ~~~~~^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask_login/utils.py", line 25, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+                                      ~~~~~~~~~^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask_login/utils.py", line 370, in _get_user
+    current_app.login_manager._load_user()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask_login/login_manager.py", line 364, in _load_user
+    user = self._user_callback(user_id)
+  File "/Users/denische/Documents/device_accounting/da/__init__.py", line 22, in load_user
+    return User.query.get(int(user_id))
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<string>", line 2, in get
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/util/deprecations.py", line 386, in warned
+    return fn(*args, **kwargs)  # type: ignore[no-any-return]
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/query.py", line 1126, in get
+    return self._get_impl(ident, loading.load_on_pk_identity)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/query.py", line 1135, in _get_impl
+    return self.session._get_impl(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        mapper,
+        ^^^^^^^
+    ...<6 lines>...
+        execution_options=self._execution_options,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 3859, in _get_impl
+    return db_load_fn(
+        self,
+    ...<5 lines>...
+        bind_arguments=bind_arguments,
+    )
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/loading.py", line 695, in load_on_pk_identity
+    session.execute(
+    ~~~~~~~~~~~~~~~^
+        q,
+        ^^
+    ...<2 lines>...
+        bind_arguments=bind_arguments,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        conn,
+        ^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+        statement, params or {}, execution_options=execution_options
+    )
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: users.deleted_at
+[SQL: SELECT users.id AS users_id, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.phone AS users_phone, users.telegram AS users_telegram, users.role AS users_role, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.deleted_at AS users_deleted_at 
+FROM users 
+WHERE users.id = ?]
+[parameters: (1,)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-11-27 23:19:21,336 ERROR [DA:875] - Exception on /employees/ [GET]
+Traceback (most recent call last):
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: users.deleted_at
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask_login/utils.py", line 284, in decorated_view
+    elif not current_user.is_authenticated:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/werkzeug/local.py", line 318, in __get__
+    obj = instance._get_current_object()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/werkzeug/local.py", line 526, in _get_current_object
+    return get_name(local())
+                    ~~~~~^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask_login/utils.py", line 25, in <lambda>
+    current_user = LocalProxy(lambda: _get_user())
+                                      ~~~~~~~~~^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask_login/utils.py", line 370, in _get_user
+    current_app.login_manager._load_user()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask_login/login_manager.py", line 364, in _load_user
+    user = self._user_callback(user_id)
+  File "/Users/denische/Documents/device_accounting/da/__init__.py", line 22, in load_user
+    return User.query.get(int(user_id))
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "<string>", line 2, in get
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/util/deprecations.py", line 386, in warned
+    return fn(*args, **kwargs)  # type: ignore[no-any-return]
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/query.py", line 1126, in get
+    return self._get_impl(ident, loading.load_on_pk_identity)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/query.py", line 1135, in _get_impl
+    return self.session._get_impl(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        mapper,
+        ^^^^^^^
+    ...<6 lines>...
+        execution_options=self._execution_options,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 3859, in _get_impl
+    return db_load_fn(
+        self,
+    ...<5 lines>...
+        bind_arguments=bind_arguments,
+    )
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/loading.py", line 695, in load_on_pk_identity
+    session.execute(
+    ~~~~~~~~~~~~~~~^
+        q,
+        ^^
+    ...<2 lines>...
+        bind_arguments=bind_arguments,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        conn,
+        ^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+        statement, params or {}, execution_options=execution_options
+    )
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: users.deleted_at
+[SQL: SELECT users.id AS users_id, users.email AS users_email, users.password_hash AS users_password_hash, users.full_name AS users_full_name, users.phone AS users_phone, users.telegram AS users_telegram, users.role AS users_role, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at, users.deleted_at AS users_deleted_at 
+FROM users 
+WHERE users.id = ?]
+[parameters: (1,)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-11-27 23:33:13,451 INFO [da.services.audit:39] - AUDIT update entity=employee(1) user=denis@ittest-team.ru
+2025-11-27 23:33:13,452 INFO [da.routes.employees:261] - Обновлены данные сотрудника Трофимов Дмитрий
+2025-11-27 23:41:19,635 INFO [da.services.email:100] - Уведомление об удалении отправлено на denis@ittest-team.ru
+2025-11-27 23:43:21,956 INFO [da.services.email:100] - Уведомление об удалении отправлено на denis@ittest-team.ru
+2025-11-27 23:44:03,699 INFO [da.services.audit:39] - AUDIT delete entity=device(2) user=denis@ittest-team.ru
+2025-11-27 23:44:03,700 WARNING [da.services.email:44] - SMTP настройки не полностью настроены, уведомление не отправлено
+2025-11-27 23:44:03,700 INFO [da.services.soft_delete:121] - Удалён device TEST-DELETE-001 (2) супер-админом
+2025-11-27 23:44:03,700 INFO [da.routes.deleted:103] - Окончательно удален device 2 (TEST-DELETE-001)
+2025-11-28 00:05:16,068 ERROR [DA:875] - Exception on /employees/ [GET]
+Traceback (most recent call last):
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/da/routes/employees.py", line 88, in list_employees
+    .order_by(Employee.full_name)
+     ~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in order_by
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/base.py", line 284, in _generative
+    x = fn(self, *args, **kw)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/query.py", line 2040, in order_by
+    criterion = tuple(
+                ^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/query.py", line 2041, in <genexpr>
+    coercions.expect(roles.OrderByRole, clause)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/coercions.py", line 395, in expect
+    resolved = impl._literal_coercion(
+        element, argname=argname, **kw
+    )
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/coercions.py", line 634, in _literal_coercion
+    self._raise_for_expected(element, argname)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/coercions.py", line 518, in _raise_for_expected
+    raise exc.ArgumentError(msg, code=code) from err
+sqlalchemy.exc.ArgumentError: ORDER BY expression expected, got <property object at 0x10885ab10>.
+2025-11-28 00:05:26,381 ERROR [DA:875] - Exception on /employees/ [GET]
+Traceback (most recent call last):
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/da/routes/employees.py", line 88, in list_employees
+    .order_by(Employee.full_name)
+     ~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in order_by
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/base.py", line 284, in _generative
+    x = fn(self, *args, **kw)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/query.py", line 2040, in order_by
+    criterion = tuple(
+                ^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/query.py", line 2041, in <genexpr>
+    coercions.expect(roles.OrderByRole, clause)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/coercions.py", line 395, in expect
+    resolved = impl._literal_coercion(
+        element, argname=argname, **kw
+    )
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/coercions.py", line 634, in _literal_coercion
+    self._raise_for_expected(element, argname)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/coercions.py", line 518, in _raise_for_expected
+    raise exc.ArgumentError(msg, code=code) from err
+sqlalchemy.exc.ArgumentError: ORDER BY expression expected, got <property object at 0x10885ab10>.
+2025-11-28 00:05:33,346 ERROR [DA:875] - Exception on / [GET]
+Traceback (most recent call last):
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: employees.first_name
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/da/routes/dashboard.py", line 18, in index
+    return render_template("index.html", devices=devices)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/denische/Documents/device_accounting/da/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/denische/Documents/device_accounting/da/templates/base.html", line 371, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/da/templates/index.html", line 13, in block 'content'
+    {% include "devices/table.html" %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/da/templates/devices/table.html", line 105, in top-level template code
+    {% if device.owner %}
+    
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/jinja2/environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/attributes.py", line 569, in __get__
+    return self.impl.get(state, dict_)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/attributes.py", line 1096, in get
+    value = self._fire_loader_callables(state, key, passive)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/attributes.py", line 1131, in _fire_loader_callables
+    return self.callable_(state, passive)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/strategies.py", line 978, in _load_for_state
+    return self._emit_lazyload(
+           ~~~~~~~~~~~~~~~~~~~^
+        session,
+        ^^^^^^^^
+    ...<7 lines>...
+        execution_options,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/strategies.py", line 1079, in _emit_lazyload
+    return loading.load_on_pk_identity(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        session,
+        ^^^^^^^^
+    ...<3 lines>...
+        execution_options=execution_options,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/loading.py", line 695, in load_on_pk_identity
+    session.execute(
+    ~~~~~~~~~~~~~~~^
+        q,
+        ^^
+    ...<2 lines>...
+        bind_arguments=bind_arguments,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        conn,
+        ^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+        statement, params or {}, execution_options=execution_options
+    )
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: employees.first_name
+[SQL: SELECT employees.id AS employees_id, employees.first_name AS employees_first_name, employees.last_name AS employees_last_name, employees.middle_name AS employees_middle_name, employees.position AS employees_position, employees.email AS employees_email, employees.phone AS employees_phone, employees.telegram AS employees_telegram, employees.location_id AS employees_location_id, employees.created_at AS employees_created_at, employees.updated_at AS employees_updated_at, employees.deleted_at AS employees_deleted_at 
+FROM employees 
+WHERE employees.id = ?]
+[parameters: (1,)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-11-28 00:05:33,856 ERROR [DA:875] - Exception on / [GET]
+Traceback (most recent call last):
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: employees.first_name
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/da/routes/dashboard.py", line 18, in index
+    return render_template("index.html", devices=devices)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/denische/Documents/device_accounting/da/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/denische/Documents/device_accounting/da/templates/base.html", line 371, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/da/templates/index.html", line 13, in block 'content'
+    {% include "devices/table.html" %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/da/templates/devices/table.html", line 105, in top-level template code
+    {% if device.owner %}
+    
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/jinja2/environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/attributes.py", line 569, in __get__
+    return self.impl.get(state, dict_)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/attributes.py", line 1096, in get
+    value = self._fire_loader_callables(state, key, passive)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/attributes.py", line 1131, in _fire_loader_callables
+    return self.callable_(state, passive)
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/strategies.py", line 978, in _load_for_state
+    return self._emit_lazyload(
+           ~~~~~~~~~~~~~~~~~~~^
+        session,
+        ^^^^^^^^
+    ...<7 lines>...
+        execution_options,
+        ^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/strategies.py", line 1079, in _emit_lazyload
+    return loading.load_on_pk_identity(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        session,
+        ^^^^^^^^
+    ...<3 lines>...
+        execution_options=execution_options,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/loading.py", line 695, in load_on_pk_identity
+    session.execute(
+    ~~~~~~~~~~~~~~~^
+        q,
+        ^^
+    ...<2 lines>...
+        bind_arguments=bind_arguments,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 2351, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/session.py", line 2249, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        conn,
+        ^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+        statement, params or {}, execution_options=execution_options
+    )
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1641, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/engine/default.py", line 951, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such column: employees.first_name
+[SQL: SELECT employees.id AS employees_id, employees.first_name AS employees_first_name, employees.last_name AS employees_last_name, employees.middle_name AS employees_middle_name, employees.position AS employees_position, employees.email AS employees_email, employees.phone AS employees_phone, employees.telegram AS employees_telegram, employees.location_id AS employees_location_id, employees.created_at AS employees_created_at, employees.updated_at AS employees_updated_at, employees.deleted_at AS employees_deleted_at 
+FROM employees 
+WHERE employees.id = ?]
+[parameters: (1,)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-11-28 00:07:21,745 ERROR [DA:875] - Exception on /employees/ [GET]
+Traceback (most recent call last):
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/da/routes/employees.py", line 88, in list_employees
+    .order_by(Employee.full_name)
+     ~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in order_by
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/base.py", line 284, in _generative
+    x = fn(self, *args, **kw)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/query.py", line 2040, in order_by
+    criterion = tuple(
+                ^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/query.py", line 2041, in <genexpr>
+    coercions.expect(roles.OrderByRole, clause)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/coercions.py", line 395, in expect
+    resolved = impl._literal_coercion(
+        element, argname=argname, **kw
+    )
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/coercions.py", line 634, in _literal_coercion
+    self._raise_for_expected(element, argname)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/coercions.py", line 518, in _raise_for_expected
+    raise exc.ArgumentError(msg, code=code) from err
+sqlalchemy.exc.ArgumentError: ORDER BY expression expected, got <property object at 0x10cc9a7f0>.
+2025-11-28 00:15:53,164 ERROR [DA:875] - Exception on /employees/ [GET]
+Traceback (most recent call last):
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/da/routes/employees.py", line 88, in list_employees
+    .order_by(Employee.full_name)
+     ~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in order_by
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/base.py", line 284, in _generative
+    x = fn(self, *args, **kw)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/query.py", line 2040, in order_by
+    criterion = tuple(
+                ^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/query.py", line 2041, in <genexpr>
+    coercions.expect(roles.OrderByRole, clause)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/coercions.py", line 395, in expect
+    resolved = impl._literal_coercion(
+        element, argname=argname, **kw
+    )
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/coercions.py", line 634, in _literal_coercion
+    self._raise_for_expected(element, argname)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/coercions.py", line 518, in _raise_for_expected
+    raise exc.ArgumentError(msg, code=code) from err
+sqlalchemy.exc.ArgumentError: ORDER BY expression expected, got <property object at 0x1088827a0>.
+2025-11-28 00:15:58,676 ERROR [DA:875] - Exception on /employees/ [GET]
+Traceback (most recent call last):
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/da/routes/employees.py", line 88, in list_employees
+    .order_by(Employee.full_name)
+     ~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in order_by
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/base.py", line 284, in _generative
+    x = fn(self, *args, **kw)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/query.py", line 2040, in order_by
+    criterion = tuple(
+                ^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/query.py", line 2041, in <genexpr>
+    coercions.expect(roles.OrderByRole, clause)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/coercions.py", line 395, in expect
+    resolved = impl._literal_coercion(
+        element, argname=argname, **kw
+    )
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/coercions.py", line 634, in _literal_coercion
+    self._raise_for_expected(element, argname)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/coercions.py", line 518, in _raise_for_expected
+    raise exc.ArgumentError(msg, code=code) from err
+sqlalchemy.exc.ArgumentError: ORDER BY expression expected, got <property object at 0x1088827a0>.
+2025-11-28 00:16:09,286 ERROR [DA:875] - Exception on /devices/1/edit [GET]
+Traceback (most recent call last):
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/da/utils.py", line 39, in decorated_function
+    return f(*args, **kwargs)
+  File "/Users/denische/Documents/device_accounting/da/routes/devices.py", line 128, in edit_device
+    employees = Employee.query.filter(Employee.deleted_at.is_(None)).order_by(Employee.full_name).all()
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in order_by
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/base.py", line 284, in _generative
+    x = fn(self, *args, **kw)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/query.py", line 2040, in order_by
+    criterion = tuple(
+                ^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/query.py", line 2041, in <genexpr>
+    coercions.expect(roles.OrderByRole, clause)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/coercions.py", line 395, in expect
+    resolved = impl._literal_coercion(
+        element, argname=argname, **kw
+    )
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/coercions.py", line 634, in _literal_coercion
+    self._raise_for_expected(element, argname)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/coercions.py", line 518, in _raise_for_expected
+    raise exc.ArgumentError(msg, code=code) from err
+sqlalchemy.exc.ArgumentError: ORDER BY expression expected, got <property object at 0x1088827a0>.
+2025-11-28 00:16:37,198 ERROR [DA:875] - Exception on /employees/ [GET]
+Traceback (most recent call last):
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/da/routes/employees.py", line 88, in list_employees
+    .order_by(Employee.full_name)
+     ~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in order_by
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/base.py", line 284, in _generative
+    x = fn(self, *args, **kw)
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/query.py", line 2040, in order_by
+    criterion = tuple(
+                ^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/orm/query.py", line 2041, in <genexpr>
+    coercions.expect(roles.OrderByRole, clause)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/coercions.py", line 395, in expect
+    resolved = impl._literal_coercion(
+        element, argname=argname, **kw
+    )
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/coercions.py", line 634, in _literal_coercion
+    self._raise_for_expected(element, argname)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/denische/Documents/device_accounting/venv/lib/python3.14/site-packages/sqlalchemy/sql/coercions.py", line 518, in _raise_for_expected
+    raise exc.ArgumentError(msg, code=code) from err
+sqlalchemy.exc.ArgumentError: ORDER BY expression expected, got <property object at 0x1088827a0>.
+2025-11-28 00:18:53,649 INFO [da.services.audit:39] - AUDIT update entity=employee(1) user=denis@ittest-team.ru
+2025-11-28 00:18:53,650 INFO [da.routes.employees:328] - Обновлены данные сотрудника Трофимов Дмитрий Игоревич
+2025-11-28 16:28:36,725 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:30:01,519 INFO [da.utils:101] - Создана новая локация: Санкт-Петербург
+2025-11-28 16:30:01,525 INFO [da.services.audit:39] - AUDIT create entity=employee(3) user=denis@ittest-team.ru
+2025-11-28 16:30:01,528 INFO [da.services.audit:39] - AUDIT create entity=employee(4) user=denis@ittest-team.ru
+2025-11-28 16:30:01,530 INFO [da.services.audit:39] - AUDIT create entity=employee(5) user=denis@ittest-team.ru
+2025-11-28 16:30:01,531 INFO [da.utils:101] - Создана новая локация: Ульяновск
+2025-11-28 16:30:01,532 INFO [da.services.audit:39] - AUDIT create entity=employee(6) user=denis@ittest-team.ru
+2025-11-28 16:30:01,533 INFO [da.utils:101] - Создана новая локация: Нальчик
+2025-11-28 16:30:01,533 INFO [da.services.audit:39] - AUDIT create entity=employee(7) user=denis@ittest-team.ru
+2025-11-28 16:30:01,535 INFO [da.services.audit:39] - AUDIT create entity=employee(8) user=denis@ittest-team.ru
+2025-11-28 16:30:01,536 INFO [da.services.audit:39] - AUDIT create entity=employee(9) user=denis@ittest-team.ru
+2025-11-28 16:30:01,538 INFO [da.services.audit:39] - AUDIT create entity=employee(10) user=denis@ittest-team.ru
+2025-11-28 16:30:01,540 INFO [da.services.audit:39] - AUDIT create entity=employee(11) user=denis@ittest-team.ru
+2025-11-28 16:30:01,541 INFO [da.services.audit:39] - AUDIT create entity=employee(12) user=denis@ittest-team.ru
+2025-11-28 16:30:01,542 INFO [da.services.audit:39] - AUDIT create entity=employee(13) user=denis@ittest-team.ru
+2025-11-28 16:30:01,544 INFO [da.utils:101] - Создана новая локация: Киров
+2025-11-28 16:30:01,545 INFO [da.services.audit:39] - AUDIT create entity=employee(14) user=denis@ittest-team.ru
+2025-11-28 16:30:01,547 INFO [da.services.audit:39] - AUDIT create entity=employee(15) user=denis@ittest-team.ru
+2025-11-28 16:30:01,548 INFO [da.services.audit:39] - AUDIT create entity=employee(16) user=denis@ittest-team.ru
+2025-11-28 16:30:01,550 INFO [da.services.audit:39] - AUDIT create entity=employee(17) user=denis@ittest-team.ru
+2025-11-28 16:30:01,552 INFO [da.services.audit:39] - AUDIT create entity=employee(18) user=denis@ittest-team.ru
+2025-11-28 16:30:01,554 INFO [da.services.audit:39] - AUDIT create entity=employee(19) user=denis@ittest-team.ru
+2025-11-28 16:30:01,555 INFO [da.services.audit:39] - AUDIT create entity=employee(20) user=denis@ittest-team.ru
+2025-11-28 16:30:01,556 INFO [da.utils:101] - Создана новая локация: Белгород
+2025-11-28 16:30:01,556 INFO [da.services.audit:39] - AUDIT create entity=employee(21) user=denis@ittest-team.ru
+2025-11-28 16:30:01,557 INFO [da.utils:101] - Создана новая локация: Новосибирск
+2025-11-28 16:30:01,558 INFO [da.services.audit:39] - AUDIT create entity=employee(22) user=denis@ittest-team.ru
+2025-11-28 16:30:01,560 INFO [da.services.audit:39] - AUDIT create entity=employee(23) user=denis@ittest-team.ru
+2025-11-28 16:30:01,561 INFO [da.services.audit:39] - AUDIT create entity=employee(24) user=denis@ittest-team.ru
+2025-11-28 16:30:01,563 INFO [da.services.audit:39] - AUDIT create entity=employee(25) user=denis@ittest-team.ru
+2025-11-28 16:30:01,564 INFO [da.services.audit:39] - AUDIT create entity=employee(26) user=denis@ittest-team.ru
+2025-11-28 16:30:01,566 INFO [da.services.audit:39] - AUDIT create entity=employee(27) user=denis@ittest-team.ru
+2025-11-28 16:30:01,567 INFO [da.services.audit:39] - AUDIT create entity=employee(28) user=denis@ittest-team.ru
+2025-11-28 16:30:01,569 INFO [da.services.audit:39] - AUDIT create entity=employee(29) user=denis@ittest-team.ru
+2025-11-28 16:30:01,570 INFO [da.services.audit:39] - AUDIT create entity=employee(30) user=denis@ittest-team.ru
+2025-11-28 16:30:01,572 INFO [da.services.audit:39] - AUDIT create entity=employee(31) user=denis@ittest-team.ru
+2025-11-28 16:30:01,573 INFO [da.services.audit:39] - AUDIT create entity=employee(32) user=denis@ittest-team.ru
+2025-11-28 16:30:01,575 INFO [da.services.audit:39] - AUDIT create entity=employee(33) user=denis@ittest-team.ru
+2025-11-28 16:30:01,576 INFO [da.services.audit:39] - AUDIT create entity=employee(34) user=denis@ittest-team.ru
+2025-11-28 16:30:01,578 INFO [da.services.audit:39] - AUDIT create entity=employee(35) user=denis@ittest-team.ru
+2025-11-28 16:30:01,579 INFO [da.utils:101] - Создана новая локация: Краснодар
+2025-11-28 16:30:01,580 INFO [da.services.audit:39] - AUDIT create entity=employee(36) user=denis@ittest-team.ru
+2025-11-28 16:30:01,581 INFO [da.services.audit:39] - AUDIT create entity=employee(37) user=denis@ittest-team.ru
+2025-11-28 16:30:01,582 INFO [da.utils:101] - Создана новая локация: Алексин
+2025-11-28 16:30:01,583 INFO [da.services.audit:39] - AUDIT create entity=employee(38) user=denis@ittest-team.ru
+2025-11-28 16:30:01,585 INFO [da.services.audit:39] - AUDIT create entity=employee(39) user=denis@ittest-team.ru
+2025-11-28 16:30:01,587 INFO [da.services.audit:39] - AUDIT create entity=employee(40) user=denis@ittest-team.ru
+2025-11-28 16:30:01,588 INFO [da.services.audit:39] - AUDIT create entity=employee(41) user=denis@ittest-team.ru
+2025-11-28 16:30:01,589 INFO [da.services.audit:39] - AUDIT create entity=employee(42) user=denis@ittest-team.ru
+2025-11-28 16:30:01,591 INFO [da.services.audit:39] - AUDIT create entity=employee(43) user=denis@ittest-team.ru
+2025-11-28 16:30:01,592 INFO [da.services.audit:39] - AUDIT create entity=employee(44) user=denis@ittest-team.ru
+2025-11-28 16:30:01,593 INFO [da.services.audit:39] - AUDIT create entity=employee(45) user=denis@ittest-team.ru
+2025-11-28 16:30:01,595 INFO [da.services.audit:39] - AUDIT create entity=employee(46) user=denis@ittest-team.ru
+2025-11-28 16:30:01,596 INFO [da.utils:101] - Создана новая локация: Ростов-на-Дону
+2025-11-28 16:30:01,597 INFO [da.services.audit:39] - AUDIT create entity=employee(47) user=denis@ittest-team.ru
+2025-11-28 16:30:01,598 INFO [da.services.audit:39] - AUDIT create entity=employee(48) user=denis@ittest-team.ru
+2025-11-28 16:30:01,599 INFO [da.services.audit:39] - AUDIT create entity=employee(49) user=denis@ittest-team.ru
+2025-11-28 16:30:01,601 INFO [da.services.audit:39] - AUDIT create entity=employee(50) user=denis@ittest-team.ru
+2025-11-28 16:30:01,602 INFO [da.utils:101] - Создана новая локация: Владимир
+2025-11-28 16:30:01,603 INFO [da.services.audit:39] - AUDIT create entity=employee(51) user=denis@ittest-team.ru
+2025-11-28 16:30:01,604 INFO [da.services.audit:39] - AUDIT create entity=employee(52) user=denis@ittest-team.ru
+2025-11-28 16:30:01,606 INFO [da.services.audit:39] - AUDIT create entity=employee(53) user=denis@ittest-team.ru
+2025-11-28 16:30:01,607 INFO [da.services.audit:39] - AUDIT create entity=employee(54) user=denis@ittest-team.ru
+2025-11-28 16:30:01,609 INFO [da.services.audit:39] - AUDIT create entity=employee(55) user=denis@ittest-team.ru
+2025-11-28 16:30:01,611 INFO [da.services.audit:39] - AUDIT create entity=employee(56) user=denis@ittest-team.ru
+2025-11-28 16:30:01,613 INFO [da.services.audit:39] - AUDIT create entity=employee(57) user=denis@ittest-team.ru
+2025-11-28 16:30:01,614 INFO [da.services.audit:39] - AUDIT create entity=employee(58) user=denis@ittest-team.ru
+2025-11-28 16:30:01,616 INFO [da.services.audit:39] - AUDIT create entity=employee(59) user=denis@ittest-team.ru
+2025-11-28 16:30:01,618 INFO [da.services.audit:39] - AUDIT create entity=employee(60) user=denis@ittest-team.ru
+2025-11-28 16:30:01,620 INFO [da.services.audit:39] - AUDIT create entity=employee(61) user=denis@ittest-team.ru
+2025-11-28 16:30:01,621 INFO [da.services.audit:39] - AUDIT create entity=employee(62) user=denis@ittest-team.ru
+2025-11-28 16:30:01,622 INFO [da.utils:101] - Создана новая локация: Нижний Новгород
+2025-11-28 16:30:01,623 INFO [da.services.audit:39] - AUDIT create entity=employee(63) user=denis@ittest-team.ru
+2025-11-28 16:30:01,624 INFO [da.utils:101] - Создана новая локация: Самара
+2025-11-28 16:30:01,624 INFO [da.services.audit:39] - AUDIT create entity=employee(64) user=denis@ittest-team.ru
+2025-11-28 16:30:01,626 INFO [da.services.audit:39] - AUDIT create entity=employee(65) user=denis@ittest-team.ru
+2025-11-28 16:30:01,627 INFO [da.services.audit:39] - AUDIT create entity=employee(66) user=denis@ittest-team.ru
+2025-11-28 16:30:01,629 INFO [da.services.audit:39] - AUDIT create entity=employee(67) user=denis@ittest-team.ru
+2025-11-28 16:30:01,630 INFO [da.services.audit:39] - AUDIT create entity=employee(68) user=denis@ittest-team.ru
+2025-11-28 16:30:01,631 INFO [da.services.audit:39] - AUDIT create entity=employee(69) user=denis@ittest-team.ru
+2025-11-28 16:30:01,633 INFO [da.services.audit:39] - AUDIT create entity=employee(70) user=denis@ittest-team.ru
+2025-11-28 16:30:01,634 INFO [da.utils:101] - Создана новая локация: Узловая
+2025-11-28 16:30:01,635 INFO [da.services.audit:39] - AUDIT create entity=employee(71) user=denis@ittest-team.ru
+2025-11-28 16:30:01,636 INFO [da.services.audit:39] - AUDIT create entity=employee(72) user=denis@ittest-team.ru
+2025-11-28 16:30:01,637 INFO [da.services.audit:39] - AUDIT create entity=employee(73) user=denis@ittest-team.ru
+2025-11-28 16:30:01,639 INFO [da.services.audit:39] - AUDIT create entity=employee(74) user=denis@ittest-team.ru
+2025-11-28 16:30:01,640 INFO [da.services.audit:39] - AUDIT create entity=employee(75) user=denis@ittest-team.ru
+2025-11-28 16:30:01,642 INFO [da.services.audit:39] - AUDIT create entity=employee(76) user=denis@ittest-team.ru
+2025-11-28 16:30:01,643 INFO [da.utils:101] - Создана новая локация: Новая Зеландия
+2025-11-28 16:30:01,643 INFO [da.services.audit:39] - AUDIT create entity=employee(77) user=denis@ittest-team.ru
+2025-11-28 16:30:01,645 INFO [da.services.audit:39] - AUDIT create entity=employee(78) user=denis@ittest-team.ru
+2025-11-28 16:30:01,647 INFO [da.services.audit:39] - AUDIT create entity=employee(79) user=denis@ittest-team.ru
+2025-11-28 16:30:01,649 INFO [da.services.audit:39] - AUDIT create entity=employee(80) user=denis@ittest-team.ru
+2025-11-28 16:30:01,649 INFO [da.routes.employees:550] - Импорт сотрудников: добавлено 78, пропущено 0
+2025-11-28 16:31:10,982 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:31:13,401 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:31:14,853 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:31:17,249 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:31:19,628 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:31:40,445 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:32:03,242 INFO [da.services.audit:39] - AUDIT update entity=employee(3) user=denis@ittest-team.ru
+2025-11-28 16:32:03,243 INFO [da.routes.employees:345] - Обновлены данные сотрудника Абрамова Владислава Евгеньевна
+2025-11-28 16:33:07,804 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:33:31,542 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:33:36,093 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:35:49,007 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:35:53,446 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:36:14,081 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:36:28,700 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:43:42,257 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:43:44,695 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:43:47,122 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:43:49,550 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:43:51,957 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:43:54,373 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:43:57,847 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:44:28,112 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:44:31,022 INFO [da.routes.auth:104] - Пользователь denis@ittest-team.ru вышел из системы
+2025-11-28 16:44:32,981 INFO [da.routes.auth:27] - Пользователь denis@ittest-team.ru вошёл в систему
+2025-11-28 16:44:40,724 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:44:41,509 INFO [da.routes.auth:104] - Пользователь denis@ittest-team.ru вышел из системы
+2025-11-28 16:45:03,452 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:45:09,004 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:45:31,810 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:45:51,224 INFO [da.routes.auth:67] - Зарегистрирован новый пользователь test@ittest-team.ru
+2025-11-28 16:45:53,727 INFO [da.routes.auth:27] - Пользователь test@ittest-team.ru вошёл в систему
+2025-11-28 16:46:30,976 INFO [da.routes.auth:104] - Пользователь test@ittest-team.ru вышел из системы
+2025-11-28 16:46:34,327 INFO [da.routes.auth:27] - Пользователь denis@ittest-team.ru вошёл в систему
+2025-11-28 16:51:01,039 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:51:18,710 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:52:24,866 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:53:02,722 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:53:06,141 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:53:25,009 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:54:34,327 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:54:44,932 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:55:00,640 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:55:21,531 INFO [da.routes.auth:110] - Пользователь denis@ittest-team.ru вышел из системы
+2025-11-28 16:55:35,821 INFO [da.routes.auth:27] - Пользователь denis@ittest-team.ru вошёл в систему
+2025-11-28 16:56:44,376 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:56:47,772 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:57:09,390 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:58:05,462 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:58:45,327 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 16:59:05,262 INFO [da.services.audit:39] - AUDIT delete entity=user(2) user=denis@ittest-team.ru
+2025-11-28 16:59:05,263 WARNING [da.services.email:44] - SMTP настройки не полностью настроены, уведомление не отправлено
+2025-11-28 16:59:05,263 INFO [da.services.soft_delete:119] - Удалён user Тест Тестович Тестов (2) супер-админом
+2025-11-28 16:59:05,263 INFO [da.routes.users:70] - Пользователь test@ittest-team.ru удален пользователем denis@ittest-team.ru
+2025-11-28 17:00:46,159 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 17:00:55,098 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 17:01:04,733 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 17:01:26,369 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 17:01:29,842 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 17:03:34,596 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 17:03:40,280 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 17:03:48,867 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 17:03:58,408 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 17:04:10,078 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 17:06:12,728 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 17:06:22,244 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 17:06:26,652 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 17:06:31,160 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 17:06:38,912 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 17:06:43,308 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 17:06:55,939 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 17:07:55,980 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 17:08:09,647 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 17:09:14,045 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 17:09:25,641 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 17:09:47,429 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 17:09:59,060 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 17:11:04,109 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 22:52:37,767 WARNING [werkzeug:97] -  * Debugger is active!
+2025-11-28 22:52:43,329 WARNING [werkzeug:97] -  * Debugger is active!
+2025-12-01 11:57:42,983 WARNING [werkzeug:97] -  * Debugger is active!
+2025-12-01 12:02:16,034 WARNING [werkzeug:97] -  * Debugger is active!
+2025-12-01 15:44:23,972 INFO [da.routes.auth:27] - Пользователь denis@ittest-team.ru вошёл в систему

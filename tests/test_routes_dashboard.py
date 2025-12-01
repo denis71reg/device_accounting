@@ -14,15 +14,10 @@ class TestDashboard:
         assert "/auth/login" in response.location
 
     def test_dashboard_accessible_by_all_roles(
-        self, logged_in_user, logged_in_admin, logged_in_super_admin, app, location
+        self, logged_in_user, logged_in_admin, logged_in_super_admin, app, location, device_type, warehouse
     ):
         """Дашборд доступен всем авторизованным пользователям."""
         with app.app_context():
-            device_type = DeviceType(name="Laptop")
-            warehouse = Warehouse(name="Main Warehouse", location_id=location.id)
-            db.session.add_all([device_type, warehouse])
-            db.session.commit()
-
             device = Device(
                 inventory_number="INV-DASH-001",
                 model="MacBook Pro",

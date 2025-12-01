@@ -8,14 +8,23 @@ from da.models import User, UserRole
 class TestUserManagement:
     """Тесты управления пользователями."""
 
-    def test_list_users_requires_super_admin(self, logged_in_user, logged_in_super_admin):
+    def test_list_users_requires_super_admin(self, client, app, regular_user, super_admin_user):
         """Только супер-админ может просматривать список пользователей."""
         # Обычный пользователь
-        response = logged_in_user.get(url_for("users.list_users"))
+        client.post(url_for("auth.login"), data={
+            "email": "user@ittest-team.ru",
+            "password": "TestPassword123!",
+        })
+        response = client.get(url_for("users.list_users"))
         assert response.status_code == 403
 
-        # Супер-админ
-        response = logged_in_super_admin.get(url_for("users.list_users"))
+        # Выходим и логинимся как супер-админ
+        client.post(url_for("auth.logout"))
+        client.post(url_for("auth.login"), data={
+            "email": "superadmin@ittest-team.ru",
+            "password": "TestPassword123!",
+        })
+        response = client.get(url_for("users.list_users"))
         assert response.status_code == 200
         assert "Пользователи".encode('utf-8') in response.data
 
@@ -92,7 +101,9 @@ class TestUserManagement:
         
         response = client.post(url_for("auth.register"), data={
             "email": "newuser@ittest-team.ru",
-            "full_name": "New User",
+            "first_name": "New",
+            "last_name": "User",
+            "middle_name": "",
             "password": "TestPassword123!",
             "password_confirm": "TestPassword123!",
             "phone": "+79991234567",
@@ -115,7 +126,9 @@ class TestUserManagement:
         # Регистрируем первого пользователя
         response = client.post(url_for("auth.register"), data={
             "email": "first@ittest-team.ru",
-            "full_name": "First User",
+            "first_name": "First",
+            "last_name": "User",
+            "middle_name": "",
             "password": "TestPassword123!",
             "password_confirm": "TestPassword123!",
             "phone": "+79991234567",

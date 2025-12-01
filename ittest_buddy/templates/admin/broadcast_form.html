@@ -1,0 +1,52 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_urls static admin_modify %}
+
+{% block title %}Отправка сообщения | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+<a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+&rsaquo; <a href="{% url 'admin:core_user_changelist' %}">Пользователи</a>
+&rsaquo; Отправка сообщения
+</div>
+{% endblock %}
+
+{% block content %}
+<h1>Отправка сообщения выбранным пользователям</h1>
+
+<div class="module">
+    <p><strong>Выбрано пользователей:</strong> {{ user_count }}</p>
+    
+    {% if selected_users %}
+    <h2>Список получателей:</h2>
+    <ul>
+        {% for user in selected_users %}
+        <li>{{ user.full_name }} (@{{ user.username }}){% if user.telegram_id %} ✓ Telegram привязан{% else %} ⚠ Telegram не привязан{% endif %}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+
+<form method="post" action="{% url 'admin:broadcast_message' %}">
+    {% csrf_token %}
+    <fieldset class="module aligned">
+        <h2>Текст сообщения</h2>
+        <div class="form-row">
+            <div>
+                <label for="id_message">Сообщение:</label>
+                <textarea name="message" id="id_message" rows="10" cols="80" required style="width: 100%; max-width: 600px;"></textarea>
+                <p class="help">Сообщение будет отправлено в Telegram выбранным пользователям</p>
+            </div>
+        </div>
+    </fieldset>
+    
+    <div class="submit-row">
+        <input type="submit" value="Отправить сообщение" class="default" />
+        <a href="{% url 'admin:core_user_changelist' %}" class="button">Отмена</a>
+    </div>
+</form>
+{% endblock %}
+
+
+
+

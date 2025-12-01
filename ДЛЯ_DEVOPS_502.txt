@@ -1,0 +1,58 @@
+═══════════════════════════════════════════════════════════════
+  ИСПРАВЛЕНИЕ ОШИБКИ 502 BAD GATEWAY
+═══════════════════════════════════════════════════════════════
+
+ПРОБЛЕМА:
+  Nginx возвращает 502, хотя приложение работает на localhost:5001
+
+БЫСТРОЕ РЕШЕНИЕ (выполните на сервере):
+
+1. Создайте конфигурацию nginx:
+
+sudo tee /etc/nginx/sites-available/da.dev-ittest.ru > /dev/null << 'EOF'
+server {
+    listen 80;
+    server_name da.dev-ittest.ru;
+    return 301 https://$server_name$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+    server_name da.dev-ittest.ru;
+
+    ssl_certificate /etc/letsencrypt/live/da.dev-ittest.ru/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/da.dev-ittest.ru/privkey.pem;
+
+    location / {
+        proxy_pass http://127.0.0.1:5001;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_connect_timeout 60s;
+        proxy_send_timeout 60s;
+        proxy_read_timeout 60s;
+    }
+}
+EOF
+
+2. Активируйте:
+
+sudo ln -sf /etc/nginx/sites-available/da.dev-ittest.ru /etc/nginx/sites-enabled/da.dev-ittest.ru
+
+3. Проверьте:
+
+sudo nginx -t
+
+4. Перезагрузите:
+
+sudo systemctl reload nginx
+
+5. Проверьте работу:
+
+curl -k https://da.dev-ittest.ru
+
+═══════════════════════════════════════════════════════════════
+
+Подробная инструкция: FIX_502_NGINX.md
+
