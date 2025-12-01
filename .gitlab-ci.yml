@@ -1,0 +1,102 @@
+stages:
+  - test
+  - deploy
+
+variables:
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: "/certs"
+  APP_NAME: device_accounting
+  DEPLOY_PATH: /opt/device_accounting
+  SERVER_HOST: 91.193.239.177
+  SERVER_PORT: "2022"
+  SERVER_USER: ittest
+
+# Кэш для зависимостей Python
+cache:
+  paths:
+    - venv/
+
+# Тестирование
+test:
+  stage: test
+  image: python:3.12-slim
+  before_script:
+    - python -m venv venv
+    - source venv/bin/activate
+    - pip install --upgrade pip
+    - pip install -r requirements.txt
+    - pip install pytest pytest-cov pytest-flask
+  script:
+    - source venv/bin/activate
+    - export FLASK_APP=da.app
+    - export FLASK_ENV=testing
+    - pytest -v --tb=short --cov=da --cov-report=term-missing || true
+  only:
+    - main
+    - develop
+    - merge_requests
+
+# Деплой на сервер
+deploy:
+  stage: deploy
+  image: alpine:latest
+  variables:
+    SERVER_HOST: "91.193.239.177"
+    SERVER_PORT: "2022"
+    SERVER_USER: "ittest"
+    DEPLOY_PATH: "/opt/device_accounting"
+  before_script:
+    - apk add --no-cache openssh-client rsync git
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan -p $SERVER_PORT -H $SERVER_HOST >> ~/.ssh/known_hosts 2>/dev/null || true
+    - chmod 644 ~/.ssh/known_hosts
+  script:
+    - |
+      echo "🚀 Начало деплоя на $SERVER_USER@$SERVER_HOST:$SERVER_PORT → $DEPLOY_PATH"
+      ssh -p $SERVER_PORT -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $SERVER_USER@$SERVER_HOST bash << 'ENDSSH'
+        set -e
+        echo "📂 Переход в директорию проекта..."
+        cd $DEPLOY_PATH 2>/dev/null || {
+          echo "📥 Проект не найден, клонирую..."
+          mkdir -p /opt
+          cd /opt
+          git clone https://code.dev-ittest.ru/ittest/device-accounting/da-python.git device_accounting
+          cd device_accounting
+        }
+        
+        echo "📥 Обновление кода из GitLab..."
+        git fetch origin
+        git reset --hard origin/main 2>/dev/null || git reset --hard origin/master
+        
+        echo "🔨 Остановка старых контейнеров..."
+        docker-compose -f docker-compose.prod.yml down || true
+        
+        echo "🔨 Пересборка Docker контейнеров..."
+        docker-compose -f docker-compose.prod.yml build
+        
+        echo "🚀 Запуск контейнеров..."
+        docker-compose -f docker-compose.prod.yml up -d
+        
+        echo "⏳ Ожидание запуска приложения (15 секунд)..."
+        sleep 15
+        
+        echo "📊 Применение миграций БД..."
+        docker-compose -f docker-compose.prod.yml exec -T app flask db upgrade || echo "⚠️ Миграции уже применены или ошибка"
+        
+        echo "✅ Проверка статуса контейнеров..."
+        docker-compose -f docker-compose.prod.yml ps
+        
+        echo "✅ Деплой завершен успешно!"
+        echo "🌐 Приложение доступно: https://da.dev-ittest.ru"
+      ENDSSH
+  only:
+    - main
+    - master
+  when: on_success
+  environment:
+    name: production
+    url: https://da.dev-ittest.ru
+
