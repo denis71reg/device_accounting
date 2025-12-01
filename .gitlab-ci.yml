@@ -74,25 +74,19 @@ deploy:
           else
              echo "⚠️ Ошибка при fetch. Помечаю на удаление..."
              cd ..
-             # Используем sudo, если прав не хватает
-             sudo rm -rf "$DEPLOY_PATH" || rm -rf "$DEPLOY_PATH"
+             rm -rf "$DEPLOY_PATH"
           fi
         elif [ -d "$DEPLOY_PATH" ]; then
            # Папка есть, но .git нет — удаляем
            echo "⚠️ Папка существует, но не является репозиторием. Удаляю..."
-           sudo rm -rf "$DEPLOY_PATH" || rm -rf "$DEPLOY_PATH"
+           rm -rf "$DEPLOY_PATH"
         fi
         
         # Если папки нет (или была удалена) — клонируем
         if [ ! -d "$DEPLOY_PATH" ]; then
            echo "📥 Клонирую проект заново..."
            
-           # Создаем /opt если нет (нужен sudo если /opt системный)
-           sudo mkdir -p /opt || mkdir -p /opt
-           
-           # Выдаем права текущему пользователю на /opt/device_accounting (чтобы git clone сработал)
-           sudo chown -R $USER /opt || true
-           
+           mkdir -p /opt
            cd /opt
            git clone https://code.dev-ittest.ru/ittest/device-accounting/da-python.git device_accounting
            cd device_accounting
