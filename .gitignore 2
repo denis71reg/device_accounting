@@ -1,0 +1,50 @@
+# Игнорировать наш "пузырь" (виртуальное окружение)
+venv/
+env/
+ENV/
+
+# Игнорировать кэш Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Игнорировать файлы баз данных SQLite
+*.db
+*.db-journal*
+instance/*.db
+
+# Игнорировать системный мусор
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Игнорировать временные файлы и архивы для деплоя
+*.tar.gz
+*.zip
+.coverage
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+
+# Игнорировать конфигурационные файлы с секретами
+.env
+*.env.local
+
+# Игнорировать IDE файлы
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Игнорировать временные скрипты деплоя с паролями
+deploy_via_2022.sh
+deploy_with_password.sh
+deploy_external.sh
+*_DEPLOY*.md
+*_DEPLOY*.txt
+UPDATE*.md
+UPDATE*.txt
+COPY_TO_SERVER.txt

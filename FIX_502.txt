@@ -1,0 +1,37 @@
+# Инструкция по фиксу 502 ошибки
+
+1. Подключитесь к серверу по SSH:
+   ssh -p 2022 ittest@91.193.239.177
+
+2. Проверьте статус Docker контейнеров:
+   cd /opt/device_accounting
+   docker-compose -f docker-compose.prod.yml ps
+
+3. Если контейнер app (da_app_prod) не запущен или перезагружается, посмотрите логи:
+   docker-compose -f docker-compose.prod.yml logs --tail=100 app
+
+   Частая причина: отсутствие переменной SECRET_KEY.
+   Создайте файл .env:
+   nano .env
+   Вставьте туда:
+   SECRET_KEY=super-secret-key-123
+   FLASK_ENV=production
+   DATABASE_URL=sqlite:///instance/devices.db
+
+   Перезапустите:
+   docker-compose -f docker-compose.prod.yml down
+   docker-compose -f docker-compose.prod.yml up -d
+
+4. Если контейнеры работают, но Nginx дает 502:
+   Проверьте, слушает ли Docker порт 5001:
+   sudo netstat -tulpn | grep 5001
+
+   Проверьте конфиг Nginx:
+   cat /etc/nginx/sites-enabled/device_accounting
+
+   Убедитесь, что там есть:
+   proxy_pass http://127.0.0.1:5001;
+
+   Перезапустите Nginx:
+   sudo systemctl restart nginx
+
