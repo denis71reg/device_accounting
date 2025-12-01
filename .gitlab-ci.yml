@@ -88,7 +88,7 @@ deploy:
            
            mkdir -p /opt
            cd /opt
-           git clone https://code.dev-ittest.ru/ittest/device-accounting/da-python.git device_accounting
+           git clone https://oauth2:N3Bgnw45c5Mgrm7xEnnb@code.dev-ittest.ru/ittest/device-accounting/da-python.git device_accounting
            cd device_accounting
         fi
         
