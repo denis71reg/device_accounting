@@ -56,7 +56,7 @@ deploy:
   script:
     - |
       echo "🚀 Начало деплоя на $SERVER_USER@$SERVER_HOST:$SERVER_PORT → $DEPLOY_PATH"
-      ssh -p $SERVER_PORT -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $SERVER_USER@$SERVER_HOST bash << 'ENDSSH'
+      ssh -p $SERVER_PORT -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $SERVER_USER@$SERVER_HOST bash << ENDSSH
         set -e
         
         echo "🔍 Проверка состояния репозитория..."
@@ -105,25 +105,25 @@ deploy:
             ls -la
             exit 1
         fi
-        echo "📄 Используется конфиг: $DC_FILE"
+        echo "📄 Используется конфиг: \$DC_FILE"
         
         echo "🔨 Остановка старых контейнеров..."
-        docker-compose -f $DC_FILE down || true
+        docker-compose -f \$DC_FILE down || true
         
         echo "🔨 Пересборка Docker контейнеров..."
-        docker-compose -f $DC_FILE build
+        docker-compose -f \$DC_FILE build
         
         echo "🚀 Запуск контейнеров..."
-        docker-compose -f $DC_FILE up -d
+        docker-compose -f \$DC_FILE up -d
         
         echo "⏳ Ожидание запуска приложения (15 секунд)..."
         sleep 15
         
         echo "📊 Применение миграций БД..."
-        docker-compose -f $DC_FILE exec -T app flask db upgrade || echo "⚠️ Миграции уже применены или ошибка"
+        docker-compose -f \$DC_FILE exec -T app flask db upgrade || echo "⚠️ Миграции уже применены или ошибка"
         
         echo "✅ Проверка статуса контейнеров..."
-        docker-compose -f $DC_FILE ps
+        docker-compose -f \$DC_FILE ps
         
         echo "✅ Деплой завершен успешно!"
         echo "🌐 Приложение доступно: https://da.dev-ittest.ru"
