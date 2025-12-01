@@ -302,7 +302,7 @@ def edit_device(device_id: int):
 
 
 @devices_bp.post("/<int:device_id>/delete")
-@can_delete_required
+@admin_required
 def delete_device(device_id: int):
     from ..services.delete_handler import handle_entity_deletion
     

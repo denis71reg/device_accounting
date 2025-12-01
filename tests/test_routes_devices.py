@@ -155,8 +155,8 @@ class TestEditDevice:
 class TestDeleteDevice:
     """Тесты для удаления устройств."""
 
-    def test_delete_device_requires_super_admin(self, logged_in_admin, app):
-        """Удаление требует прав супер-администратора."""
+    def test_delete_device_requires_admin(self, logged_in_user, app):
+        """Удаление требует прав администратора."""
         with app.app_context():
             device_type = DeviceType(name="Laptop")
             location = Location(name="Test Location")
@@ -172,11 +172,11 @@ class TestDeleteDevice:
             db.session.commit()
             device_id = device.id
 
-        response = logged_in_admin.post(f"/devices/{device_id}/delete")
+        response = logged_in_user.post(f"/devices/{device_id}/delete")
         assert response.status_code == 403
 
-    def test_delete_device_by_super_admin(self, logged_in_super_admin, app):
-        """Супер-администратор может удалять устройства."""
+    def test_delete_device_by_admin(self, logged_in_admin, app):
+        """Администратор может удалять устройства (soft delete)."""
         with app.app_context():
             device_type = DeviceType(name="Laptop")
             location = Location(name="Test Location")
@@ -192,14 +192,14 @@ class TestDeleteDevice:
             db.session.commit()
             device_id = device.id
 
-        response = logged_in_super_admin.post(
+        response = logged_in_admin.post(
             f"/devices/{device_id}/delete", follow_redirects=True
         )
         assert response.status_code == 200
 
         with app.app_context():
-            device = Device.query.get(device_id)
-            assert device is None
+            device = db.session.get(Device, device_id)
+            assert device.deleted_at is not None
 
 
 class TestDeviceTransfer:
