@@ -8,3 +8,6 @@ class CoreConfig(AppConfig):
 
 
 
+
+
+

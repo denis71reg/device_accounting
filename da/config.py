@@ -58,8 +58,7 @@ class ProductionConfig(Config):
 
 class TestingConfig(Config):
     TESTING = True
-    # Используем файл для тестов, чтобы данные сохранялись между запросами
-    SQLALCHEMY_DATABASE_URI = f"sqlite:///{BASE_DIR / 'instance' / 'test.db'}"
+    SQLALCHEMY_DATABASE_URI = "sqlite:///:memory:"
     WTF_CSRF_ENABLED = False
     LOG_LEVEL = "CRITICAL"
 

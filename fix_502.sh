@@ -155,3 +155,6 @@ echo "Для просмотра логов в реальном времени:"
 echo "  docker-compose -f docker-compose.prod.yml logs -f app"
 echo ""
 
+
+
+

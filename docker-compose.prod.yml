@@ -1,30 +1,44 @@
 version: '3.8'
 
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: da_app_prod
-    restart: unless-stopped
+  db:
+    image: postgres:15-alpine
+    container_name: device_accounting_db
     environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-device_accounting}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    container_name: device_accounting_app
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - FLASK_APP=da.app
       - FLASK_ENV=production
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@db:5432/${POSTGRES_DB:-device_accounting}
       - SECRET_KEY=${SECRET_KEY}
-      - DATABASE_URL=${DATABASE_URL:-sqlite:///instance/devices.db}
+      - SMTP_HOST=${SMTP_HOST}
+      - SMTP_PORT=${SMTP_PORT}
+      - SMTP_USER=${SMTP_USER}
+      - SMTP_PASSWORD=${SMTP_PASSWORD}
     ports:
-      - "${APP_PORT:-5001}:5001"
+      - "5001:5001"
     volumes:
       - ./instance:/app/instance
-      - ./logs:/app/logs
-    healthcheck:
-      test: ["CMD-SHELL", "python -c 'import socket; s=socket.socket(); s.connect((\"127.0.0.1\", 5001)); s.close()' || exit 1"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
+      - ./migrations:/app/migrations
+
+volumes:
+  postgres_data:
 

@@ -6,7 +6,7 @@ from sqlalchemy.orm import DeclarativeBase
 from ..extensions import db
 from ..models import AuditAction, utcnow
 from .audit import log_action
-from . import email
+from .email import send_deletion_notification
 
 logger = logging.getLogger(__name__)
 
@@ -48,7 +48,7 @@ def soft_delete_entity(
     
     # Отправляем уведомление на email
     try:
-        email.send_deletion_notification(
+        send_deletion_notification(
             entity_type=entity_type,
             entity_name=entity_name,
             deleted_by=current_user.email,
@@ -106,7 +106,7 @@ def hard_delete_entity(
     
     # Отправляем уведомление на email
     try:
-        email.send_deletion_notification(
+        send_deletion_notification(
             entity_type=entity_type,
             entity_name=entity_name,
             deleted_by=deleted_by_email,

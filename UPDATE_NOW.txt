@@ -1,0 +1,47 @@
+═══════════════════════════════════════════════════════════════
+  БЫСТРОЕ ОБНОВЛЕНИЕ СЕРВЕРА
+═══════════════════════════════════════════════════════════════
+
+На сервере старая версия. Нужно обновить.
+
+ШАГ 1: Подключитесь к серверу
+───────────────────────────────────────────────────────────────
+ssh ittest@192.168.16.44
+Пароль: adXovByUUm6yJ88f
+
+ШАГ 2: Загрузите файлы на сервер
+───────────────────────────────────────────────────────────────
+С другой машины (где есть доступ):
+rsync -avz --progress \
+    --exclude '.git' --exclude 'venv' --exclude '__pycache__' \
+    --exclude '*.pyc' --exclude 'instance' --exclude '.env' \
+    --exclude '*.db' --exclude '*.log' \
+    ./ ittest@192.168.16.44:/opt/device_accounting/
+
+Или загрузите update_package.tar.gz:
+scp update_package.tar.gz ittest@192.168.16.44:/opt/device_accounting/
+
+ШАГ 3: На сервере выполните
+───────────────────────────────────────────────────────────────
+cd /opt/device_accounting
+
+# Если загрузили архив:
+tar -xzf update_package.tar.gz
+
+# Обновление:
+docker-compose -f docker-compose.prod.yml down
+docker-compose -f docker-compose.prod.yml build --no-cache
+docker-compose -f docker-compose.prod.yml up -d
+sleep 5
+docker-compose -f docker-compose.prod.yml exec -T app flask db upgrade
+
+# Или используйте скрипт:
+chmod +x quick_update.sh
+./quick_update.sh
+
+═══════════════════════════════════════════════════════════════
+После обновления проверьте:
+  ✅ "Девайсы" вместо "Инвентарь"
+  ✅ Нет кнопок "Выдать" и "Вернуть"
+  ✅ Форма регистрации: 3 поля
+═══════════════════════════════════════════════════════════════
